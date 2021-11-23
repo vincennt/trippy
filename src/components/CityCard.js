@@ -34,7 +34,7 @@ console.log(hotels);
         <div>
             {hotels.cities.map(hotel=> 
             <HotelContainer key={hotel.name}>
-                <img src={`https://trippy-konexio.herokuapp.com/${hotel.source}`}/>                
+                <img src={`https://trippy-konexio.herokuapp.com/${hotel.source}`} alt={hotel.slug}/>                
                 <p>{hotel.name}</p>
             </HotelContainer>
             )}
