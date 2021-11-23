@@ -2,17 +2,32 @@ import React from 'react';
 
 import { useEffect , useState } from 'react';
 import styled from 'styled-components'
+import { Link } from 'react-router-dom';
 
 
+
+
+const Hotel = styled.div`
+    display : flex ;
+    flex-direction: column ;
+    width: 320px ;
+    border : solid red ;
+    border-radius:  5px ;
+    text-decoration : none
+    
+    
+    
+`
 const HotelContainer = styled.div`
     display : flex ;
-    width: 200px ;
-    height: 200px
+    flex-direction: column ;
+    align-items: center;
+     gap: 20px ;
+} 
 `
 
-const CityCard = () => {
 
-    
+const CityCard = () => {
 
     const [hotels , setHotels] = useState(null)
 
@@ -25,20 +40,25 @@ const CityCard = () => {
 
 console.log(hotels);
 
+
+
   if(!hotels ){
         return (
         <p>Loading Data , please wait </p>
         )
   }
     return (
-        <div>
-            {hotels.cities.map(hotel=> 
-            <HotelContainer key={hotel.name}>
+        <HotelContainer>
+            {hotels.cities.map((hotel,i)=> 
+            <Link to={`/hotels/${hotel.slug}`} >
+            <Hotel 
+            key={i}>
                 <img src={`https://trippy-konexio.herokuapp.com/${hotel.source}`} alt={hotel.slug}/>                
                 <p>{hotel.name}</p>
-            </HotelContainer>
+            </Hotel>
+            </Link>
             )}
-        </div>
+        </HotelContainer>
     );
 };
 
