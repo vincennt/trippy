@@ -1,30 +1,39 @@
 import React from 'react';
 import Nav from '../components/Nav';
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
+
+import HotelCard from '../components/HotelCard';
 
 const Hotels = () => {
     const [paris, setParis] = useState([])
 
     useEffect(() => {
-        fetch(`https://trippy-konexio.herokuapp.com/api/hotels/city/paris?page=1`)
-          .then((res) => res.json())
+        fetch(`https://trippy-konexio.herokuapp.com/api/hotels/city/paris?page=2`)
+            .then((res) => res.json())
             .then((res) => setParis(res.results));
-        }, []);
-        console.log(paris)
+    }, []);
+    console.log(paris)
     return (
         <>
-        <Nav />
-        <h1>Hotels Page</h1>
-        {paris.map(hotel =>
-        <div key={hotel.name}>
-            <img src="https://trippy-konexio.herokuapp.com/img/hotels/229619_1.jpg" alt={hotel.name} />
-            <p>{hotel.name}</p>
-            <p>{hotel.price} Euro</p>
-            <p>{hotel.stars} Stars</p>
-        </div>
-            )}
+            <Nav />
+            <h1>Hotels Page</h1>
+          
+            {paris.map(hotel =>{
+                return <HotelCard
+                img={hotel.pictures}
+                name={hotel.name}
+                price={hotel.price}
+                stars={hotel.stars}
+                />
+            })
+            }
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
         </>
     );
 };
 
 export default Hotels;
+
+
