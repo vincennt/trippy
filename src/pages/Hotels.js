@@ -17,7 +17,7 @@ const Hotels = () => {
         <h1>Hotels Page</h1>
         {paris.map(hotel =>
         <div key={hotel.name}>
-            <img src="https://trippy-konexio.herokuapp.com/img/hotels/229619_1.jpg" />
+            <img src="https://trippy-konexio.herokuapp.com/img/hotels/229619_1.jpg" alt={hotel.name} />
             <p>{hotel.name}</p>
             <p>{hotel.price} Euro</p>
             <p>{hotel.stars} Stars</p>
