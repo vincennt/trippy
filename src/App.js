@@ -8,7 +8,7 @@ import NotFound from "./pages/NotFound"
 
 const App = () => {
   return (
-    <UserContextProvider>
+    
       <BrowserRouter>
           <Routes>
             <Route exact path="/" element={<Home />} />
@@ -17,7 +17,7 @@ const App = () => {
             <Route path="*" element={<NotFound />} />
           </Routes>
       </BrowserRouter>
-    </UserContextProvider>
+    
   )
 }
 
