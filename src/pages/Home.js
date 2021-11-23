@@ -1,11 +1,11 @@
 import React from 'react';
 
-
+import CityCard from '../components/CityCard';
 
 const Home = () => {
     return (
         <div>
-            <h1>Home</h1>
+            <CityCard/>
         </div>
     );
 };
