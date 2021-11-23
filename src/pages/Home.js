@@ -1,11 +1,13 @@
 import React from 'react';
+import Nav from '../components/Nav';
 
 import CityCard from '../components/CityCard';
 
 const Home = () => {
     return (
         <div>
-            <CityCard/>
+            <Nav />
+            <h1>Home</h1>
         </div>
     );
 };
