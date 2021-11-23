@@ -1,17 +1,48 @@
 import React from 'react';
-// const {img, name , price , stars} = props
+import { useEffect, useState } from "react";
+import styled from 'styled-components'
+
+
+const Hotel = styled.div`
+    display : flex ;
+    flex-direction: column ;
+    width: 320px ;
+    border : solid LightGray ;
+    border-radius:  5px ;
+    align-items: center;
+   
+`
+const HotelContainer = styled.div`
+    display : flex ;
+    flex-direction: column ;
+    align-items: center;
+     gap: 20px ;
+
+`
 const HotelCard = () => {
-    
-    
+
+    const [paris, setParis] = useState([])
+
+    useEffect(() => {
+        fetch(`https://trippy-konexio.herokuapp.com/api/hotels/city/paris?page=1`)
+            .then((res) => res.json())
+            .then((res) => setParis(res.results));
+    }, []);
+
     return (
-        <h1>HAHAHAH</h1>
-    //     <div key={name}>
-    //     {/* <img src={`https://trippy-konexio.herokuapp.com/img/hotels/229619_1.jpg`} alt={hotel.name} /> */}
-    //     <p>{name}</p>
-    //     <p>{price} Euro</p>
-    //     <p>{stars} Stars</p>
-    // </div>
+        <HotelContainer>
+            {paris.map(hotel => {
+                return <Hotel>
+                    <img src={"https://trippy-konexio.herokuapp.com/img/hotels/197200_29.jpg"} alt={hotel.name}/>
+                    <p>{hotel.name}</p>
+                    <p>{hotel.price} Euro</p>
+                    <p>{hotel.stars} Stars</p>
+                </Hotel>
+            })}
+
+        </HotelContainer>
     );
 };
 
 export default HotelCard;
+
