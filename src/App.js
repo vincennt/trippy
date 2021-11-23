@@ -1,7 +1,23 @@
-const App=()=>{
+import { BrowserRouter, Routes, Route } from "react-router-dom"
 
-  return(
-  <h1>Apee</h1>
+import Home from "./pages/Home"
+import Hotels from "./pages/Hotels"
+import HotelPage from "./pages/HotelPage"
+import NotFound from "./pages/NotFound"
+
+
+const App = () => {
+  return (
+    <UserContextProvider>
+      <BrowserRouter>
+          <Routes>
+            <Route exact path="/" element={<Home />} />
+            <Route exact path="/hotels" element={<Hotels />} />
+            <Route path="/hotelpage" element={<HotelPage />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+      </BrowserRouter>
+    </UserContextProvider>
   )
 }
 
