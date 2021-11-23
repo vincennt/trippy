@@ -1,8 +1,11 @@
+import React from 'react';
 
-const HotelPage =()=>{
-    
-    return(
-        <p>hotelpage</p>
-    )
-}
-export default HotelPage
+const HotelPage = () => {
+    return (
+        <div>
+            <h1>Hotel Page Page</h1>
+        </div>
+    );
+};
+
+export default HotelPage;
