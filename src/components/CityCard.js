@@ -32,13 +32,18 @@ const CityCard = () => {
     const [hotels , setHotels] = useState(null)
 
     //appel API des infos de la home page
-      useEffect(() => { 
-    fetch(`https://trippy-konexio.herokuapp.com/api/home`)
-      .then(response => response.json())
-      .then(data => setHotels(data))
-  }, [])
 
-console.log(hotels);
+    useEffect(() => {
+        getApi()
+    }, [])
+
+    const getApi= () => {
+        fetch(`https://trippy-konexio.herokuapp.com/api/home`)
+            .then(response => response.json())
+            .then(data => setHotels(data))
+  }
+
+// console.log(hotels);
 
 
 
