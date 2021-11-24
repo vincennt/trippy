@@ -13,7 +13,6 @@ const Image = styled.img`
 const Hotel = styled.div`
     width: 320px ;
     background-image: url("src");
-    // background: linear-gradient(to bottom, #fff 50%, #e0e0e0 100%);
     border-radius: 10px;
     border: 2px solid;
     font-weight: bold;
