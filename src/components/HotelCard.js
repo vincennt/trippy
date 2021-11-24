@@ -3,11 +3,15 @@ import styled from 'styled-components'
 import { useParams } from 'react-router-dom';
 import arrayImage from './Img';
 
+const Image = styled.img`
+    background-image: url("src");
+    width: 320px ;
+`
 
 const Hotel = styled.div`
     width: 320px ;
-
-    background: linear-gradient(to bottom, #fff 50%, #e0e0e0 100%);
+    background-image: url("src");
+    // background: linear-gradient(to bottom, #fff 50%, #e0e0e0 100%);
     border-radius: 10px;
     border: 2px solid;
     font-weight: bold;
@@ -58,7 +62,7 @@ const HotelCard = props => {
                 console.log(src);
                 return(
                         <Hotel key={hotel.name}>
-                            <img src={src}
+                            <Image src={src}
      
                          alt={hotel.name}/>
 
