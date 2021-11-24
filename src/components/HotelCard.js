@@ -1,16 +1,18 @@
-import {React , useState, useEffect } from 'react';
+import { React, useState, useEffect } from 'react';
 import styled from 'styled-components'
 import { useParams } from 'react-router-dom';
 import arrayImage from './Img';
 
 
 const Hotel = styled.div`
-    display : flex ;
-    flex-direction: column ;
     width: 320px ;
-    border : solid LightGray ;
-    border-radius:  5px ;
-    align-items: center;
+
+    background: linear-gradient(to bottom, #fff 50%, #e0e0e0 100%);
+    border-radius: 10px;
+    border: 2px solid;
+    font-weight: bold;
+    margin: 0 1em;
+    padding: 20px 20px;
    
 `
 const HotelContainer = styled.div`
@@ -19,29 +21,27 @@ const HotelContainer = styled.div`
     align-items: center;
      gap: 20px ;
 
-` 
+`
+
 const HotelCard = props => {
 
-    
+    const [hotels, setHotels] = useState(null)
+    const { city } = useParams()
 
-  
-      const [hotels , setHotels] = useState(null)
-      const { city } = useParams()
-      console.log(city);
-       
+
     // console.log(`form hotelcards : ${city}`);
 
-   
-    
-   useEffect(() => { 
-    fetch(`https://trippy-konexio.herokuapp.com/api/hotels/city/${city}`)
-      .then(response => response.json())
-      .then(data => setHotels(data))
-  }, [])
-   
-    if(!hotels){
+
+
+    useEffect(() => {
+        fetch(`https://trippy-konexio.herokuapp.com/api/hotels/city/${city}?page=${props.pageNumber}`)
+            .then(response => response.json())
+            .then(data => setHotels(data))
+    }, [props, city])
+
+    if (!hotels) {
         return (
-        <p>Loading Data , please wait </p>
+            <p>Loading Data , please wait </p>
         )
         
    }
@@ -65,7 +65,8 @@ const HotelCard = props => {
                             <p>{hotel.name}</p>
                             <p>{hotel.price} Euro</p>
                             <p>{hotel.stars} Stars</p>
-                        </Hotel>)
+                       
+                    </Hotel>)
             })}
 
         </HotelContainer>
