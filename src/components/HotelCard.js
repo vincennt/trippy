@@ -6,6 +6,7 @@ import arrayImage from './Img';
 const Image = styled.img`
     background-image: url("src");
     width: 320px ;
+    height : 300px;
 `
 
 const Hotel = styled.div`
