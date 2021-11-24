@@ -24,14 +24,15 @@ const HotelContainer = styled.div`
 const HotelCard = props => {
 
       const [hotels , setHotels] = useState(null)
-      const { city } = useParams()
+      const { city, page } = useParams()
+      
        
     // console.log(`form hotelcards : ${city}`);
 
-   
+
     
    useEffect(() => { 
-    fetch(`https://trippy-konexio.herokuapp.com/api/hotels/city/${city}`)
+    fetch(`https://trippy-konexio.herokuapp.com/api/hotels/city/${city}?page=${page}`)
       .then(response => response.json())
       .then(data => setHotels(data))
   }, [])
@@ -44,7 +45,7 @@ const HotelCard = props => {
     return (
         <HotelContainer>
             {hotels.results.map(hotel => {return(
-                        <Hotel key={Hotel.name}>
+                        <Hotel key={hotel.name}>
                             <img src={"https://trippy-konexio.herokuapp.com/img/hotels/197200_29.jpg"} alt={hotel.name}/>
                             <p>{hotel.name}</p>
                             <p>{hotel.price} Euro</p>
