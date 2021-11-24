@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Nav from '../components/Nav';
+import HotelMap from '../components/HotelMap';
 
 // const pathname = window.location.pathname
 // console.log(pathname);
@@ -14,7 +15,9 @@ const HotelPage = (props) => {
     return (
         <div>
             <Nav />
-            <h1>Hotel Page Page</h1>
+            <HotelMap>
+            
+            </HotelMap>
         </div>
     );
 };
