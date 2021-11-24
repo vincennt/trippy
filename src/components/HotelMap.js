@@ -1,27 +1,36 @@
 import GoogleMapReact from 'google-map-react';
-// import styled from 'styled-components';
-import { useEffect } from 'react';
+import styled from 'styled-components';
+import { useEffect, useState } from 'react';
+import HotelMarker from '../components/HotelMarker';
 
-const HotelMap = () => {
+const MapContainer = styled.div`
+  height: 100vh;
+  width: 100%;
+`
+const HotelMap = props => {
 
-    // (hook) équivalent du composantDidMount
-    useEffect(() => {
-        navigator.geolocation.getCurrentPosition(
-            location => {
-                console.log(location.coords);
-            }
-        )
-    }, [])
+    if (!props.hotels) {
+        return <p>Chargement...</p>
+    }
+
+    console.log('line 33 message', props);
 
     return (
-        <div style={{ height: '100vh', width: '100%' }}>
+        <MapContainer>
             <GoogleMapReact
-                bootstrapURLKeys={{ key: "" }} 
-                defaultCenter={{ lat: 48.8666883, lng: 2.4174073 }}
-                defaultZoom={25}
+                bootstrapURLKeys={{ key: "" }}
+                defaultCenter={{ lat: props.hotels.center.lat, lng: props.hotels.center.lon }}
+                defaultZoom={12}
             >
+                {props.hotels.results.map(hotel => (
+                    <HotelMarker
+                        lat={hotel.location.lat}
+                        hotel={hotel}
+                        lng={hotel.location.lon}
+                    />
+                ))}
             </GoogleMapReact>
-        </div>
+        </MapContainer>
     );
 };
 

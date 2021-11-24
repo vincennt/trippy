@@ -1,19 +1,17 @@
-import {React} from 'react';
+import { React, useRef } from 'react';
 
 import HotelCard from '../components/HotelCard';
 import Nav from '../components/Nav';
 
 
+const Hotels = props => {
 
-
-const Hotels = (props) => {
-    
 //  const { city } = useParams()
     // console.log(`"from hotel:"${city}`);
     return (
         <div>
-            <Nav/>
-           <HotelCard/>
+            <Nav />
+           <HotelCard />
         </div>
         )
     }
