@@ -2,6 +2,7 @@ import React from 'react';
 import Carousel from '../components/Carousel';
 import styled from 'styled-components'
 import Nav from '../components/Nav';
+import HotelMap from '../components/HotelMap';
 
 const CarouselSize = styled.div`
     width: 100vh ; 
@@ -21,6 +22,9 @@ const HotelPage = (props) => {
             <CarouselSize>
                 <Carousel />
             </CarouselSize>
+            <HotelMap>
+            
+            </HotelMap>
         </div>
     );
 };

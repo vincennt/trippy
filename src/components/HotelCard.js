@@ -1,6 +1,6 @@
 import { React, useState, useEffect } from 'react';
 import styled from 'styled-components'
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import arrayImage from './Img';
 import ReactStars from "react-rating-stars-component";
 
@@ -27,16 +27,13 @@ const HotelContainer = styled.div`
      gap: 20px ;
 
 `
-
+const handleAddFav = () =>{
+    console.log('add');
+}
 const HotelCard = props => {
-
     const [hotels, setHotels] = useState(null)
     const { city } = useParams()
-
-
-    // console.log(`form hotelcards : ${city}`);
-
-
+    console.log(`form hotelcards : ${city}`);
 
     useEffect(() => {
         fetch(`https://trippy-konexio.herokuapp.com/api/hotels/city/${city}?page=${props.pageNumber}`)
@@ -63,6 +60,7 @@ const HotelCard = props => {
 
                 console.log(src);
                 return (
+                    <Link key={hotel._id} to={`/hotels/${city}/${hotel._id}`}>
                     <Hotel key={hotel.name}>
                         <Image src={src}
 
@@ -75,8 +73,9 @@ const HotelCard = props => {
                             size={24}
                             color="#ffd700"    
                         />
-
-                    </Hotel>)
+                        <button onClick={handleAddFav}>add fav</button>
+                    </Hotel>
+                    </Link>)
             })}
 
         </HotelContainer>
