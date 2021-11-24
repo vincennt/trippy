@@ -6,8 +6,11 @@ import { Link} from 'react-router-dom';
 
 
 
-
-const Hotel = styled.div`
+const imgContainer = styled.img`
+width : 200px ;
+height : 200px
+`
+const City = styled.div`
     display : flex ;
     flex-direction: column ;
     width: 320px ;
@@ -18,7 +21,7 @@ const Hotel = styled.div`
     
     
 `
-const HotelContainer = styled.div`
+const CityContainer = styled.div`
     display : flex ;
     flex-direction: column ;
     align-items: center;
@@ -31,7 +34,7 @@ const CityCard = () => {
     // const { city } = useParams()
     // console.log(`from city cards ${city}`);
 
-    const [hotels , setHotels] = useState(null)
+    const [citys , setCitys] = useState(null)
 
     //appel API des infos de la home page
 
@@ -43,30 +46,29 @@ const CityCard = () => {
     const getApi= () => {
         fetch(`https://trippy-konexio.herokuapp.com/api/home`)
             .then(response => response.json())
-            .then(data => setHotels(data))
+            .then(data => setCitys(data))
   }
 
 // console.log(hotels);
 
 
 
-  if(!hotels ){
+  if(!citys ){
         return (
         <p>Loading Data , please wait </p>
         )
   }
     return (
-        <HotelContainer>
-            {hotels.cities.map((hotel,i)=> 
-            <Link to={`/hotels/${hotel.slug}`} >
-            <Hotel 
-            key={1}>
-                <img src={`https://trippy-konexio.herokuapp.com/${hotel.source}`} alt={hotel.slug}/>                
-                <p>{hotel.name}</p>
-            </Hotel>
+        <CityContainer>
+            {citys.cities.map((city,i)=> 
+            <Link key={city.name} to={`/hotels/${city.slug}`} >
+            <City >
+                <img src={`https://trippy-konexio.herokuapp.com/${city.source}`} alt={city.slug}/>                
+                <p>{city.name}</p>
+            </City>
             </Link>
             )}
-        </HotelContainer>
+        </CityContainer>
     );
 };
 
