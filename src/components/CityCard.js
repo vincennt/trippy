@@ -2,7 +2,7 @@ import React from 'react';
 
 import { useEffect , useState } from 'react';
 import styled from 'styled-components'
-import { Link } from 'react-router-dom';
+import { Link} from 'react-router-dom';
 
 
 
@@ -23,11 +23,13 @@ const HotelContainer = styled.div`
     flex-direction: column ;
     align-items: center;
      gap: 20px ;
-} 
+
 `
 
 
 const CityCard = () => {
+    // const { city } = useParams()
+    // console.log(`from city cards ${city}`);
 
     const [hotels , setHotels] = useState(null)
 
@@ -35,6 +37,7 @@ const CityCard = () => {
 
     useEffect(() => {
         getApi()
+        
     }, [])
 
     const getApi= () => {
@@ -57,7 +60,7 @@ const CityCard = () => {
             {hotels.cities.map((hotel,i)=> 
             <Link to={`/hotels/${hotel.slug}`} >
             <Hotel 
-            key={i}>
+            key={1}>
                 <img src={`https://trippy-konexio.herokuapp.com/${hotel.source}`} alt={hotel.slug}/>                
                 <p>{hotel.name}</p>
             </Hotel>
