@@ -37,7 +37,7 @@ const HotelCard = props => {
         fetch(`https://trippy-konexio.herokuapp.com/api/hotels/city/${city}?page=${props.pageNumber}`)
             .then(response => response.json())
             .then(data => setHotels(data))
-    }, [props, city])
+    }, [city, props.pageNumber])
 
     if (!hotels) {
         return (
