@@ -17,9 +17,7 @@ const City = styled.div`
     width: 320px ;
     border : solid red ;
     border-radius:  5px ;
-    text-decoration : none
-    
-    
+    text-decoration : none  
     
 `
 const CityContainer = styled.div`

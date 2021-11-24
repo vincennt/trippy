@@ -12,7 +12,7 @@ const Hotels = (props) => {
       setPage(page)
     }
       
-    // console.log(page)
+    // console.log(pa)
 //  const { city } = useParams()
     // console.log(`"from hotel:"${city}`);
     return (

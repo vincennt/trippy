@@ -50,9 +50,10 @@ const HotelCard = props => {
         )
 
     }
-    console.log(hotels.results);
+    console.log(props);
     return (
         <HotelContainer>
+            {props.children}
             {hotels.results.map(hotel => {
                 var src = hotel.pictures.find(picture => arrayImage.includes(picture))
                 if (src) {
@@ -72,7 +73,7 @@ const HotelCard = props => {
                         <ReactStars
                             count={hotel.stars}
                             size={24}
-                            color="#ffd700"
+                            color="#ffd700"    
                         />
 
                     </Hotel>)
