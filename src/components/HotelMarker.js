@@ -21,12 +21,12 @@ const HotelMarker = props => {
     return (
         <Box>
             <BoxPrice
-                onMouseEnter={() => {
-                    props.setSelectHotel(props.hotels)
-                }}
-                onMouseLeave={() => {
-                    props.setSelectHotel()
-                }}
+                // onMouseEnter={() => {
+                //     props.setSelectHotel(props.hotels)
+                // }}
+                // onMouseLeave={() => {
+                //     props.setSelectHotel()
+                // }}
                 lat={props.lat}
                 lng={props.lng}
             >
