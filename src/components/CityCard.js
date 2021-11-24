@@ -2,7 +2,7 @@ import React from 'react';
 
 import { useEffect , useState } from 'react';
 import styled from 'styled-components'
-import { Link } from 'react-router-dom';
+import { Link} from 'react-router-dom';
 
 
 
@@ -23,22 +23,30 @@ const HotelContainer = styled.div`
     flex-direction: column ;
     align-items: center;
      gap: 20px ;
-} 
+
 `
 
 
 const CityCard = () => {
+    // const { city } = useParams()
+    // console.log(`from city cards ${city}`);
 
     const [hotels , setHotels] = useState(null)
 
     //appel API des infos de la home page
-      useEffect(() => { 
-    fetch(`https://trippy-konexio.herokuapp.com/api/home`)
-      .then(response => response.json())
-      .then(data => setHotels(data))
-  }, [])
 
-console.log(hotels);
+    useEffect(() => {
+        getApi()
+        
+    }, [])
+
+    const getApi= () => {
+        fetch(`https://trippy-konexio.herokuapp.com/api/home`)
+            .then(response => response.json())
+            .then(data => setHotels(data))
+  }
+
+// console.log(hotels);
 
 
 
@@ -52,7 +60,7 @@ console.log(hotels);
             {hotels.cities.map((hotel,i)=> 
             <Link to={`/hotels/${hotel.slug}`} >
             <Hotel 
-            key={i}>
+            key={1}>
                 <img src={`https://trippy-konexio.herokuapp.com/${hotel.source}`} alt={hotel.slug}/>                
                 <p>{hotel.name}</p>
             </Hotel>

@@ -10,6 +10,7 @@ const Home = () => {
             <Nav />
             <HotelMap />
             <h1>Home</h1>
+            <CityCard />
         </div>
     );
 };
