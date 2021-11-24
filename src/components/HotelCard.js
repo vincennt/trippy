@@ -28,7 +28,7 @@ const HotelContainer = styled.div`
 
 `
 const handleAddFav = () =>{
-    console.log('add fav');
+    console.log('add');
 }
 const HotelCard = props => {
     const [hotels, setHotels] = useState(null)
