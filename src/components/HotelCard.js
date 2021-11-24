@@ -27,7 +27,9 @@ const HotelContainer = styled.div`
      gap: 20px ;
 
 `
-
+const handleAddFav = () =>{
+    console.log('add fav');
+}
 const HotelCard = props => {
     const [hotels, setHotels] = useState(null)
     const { city } = useParams()
@@ -57,6 +59,7 @@ const HotelCard = props => {
 
                 console.log(src);
                 return (
+                    <Link key={hotel._id} to={`/hotels/${city}/${hotel._id}`}>
                     <Hotel key={hotel.name}>
                         <Image src={src}
 
@@ -69,8 +72,9 @@ const HotelCard = props => {
                             size={24}
                             color="#ffd700"
                         />
-
-                    </Hotel>)
+                        <button onClick={handleAddFav}>add fav</button>
+                    </Hotel>
+                    </Link>)
             })}
 
         </HotelContainer>
