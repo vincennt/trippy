@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { useParams } from 'react-router-dom';
 import HotelMap from '../components/HotelMap';
 import arrayImage from './Img';
-import HotelMap from './HotelMap';
+
 
 const Image = styled.img`
     background-image: url("src");
