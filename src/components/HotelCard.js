@@ -76,10 +76,9 @@ const HotelCard = props => {
                     return (
                          <Link key={hotel._id} to={`/hotels/${city}/${hotel._id}`}>
                         <Hotel key={hotel.name}>
-                            <Image src={src}
-
-                                alt={hotel.name} />
-
+                            <Image
+                            src={src} 
+                            alt={hotel.name} />
                             <p>{hotel.name}</p>
                             <p>{hotel.price}€</p>
                             <p>{hotel.stars} Stars</p>
