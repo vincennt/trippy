@@ -13,8 +13,8 @@ const Image = styled.img`
 
 const Map = styled.div`
 display : grid;
-    grid-template-columns: 60px 60px;
-  grid-template-rows: 90px 90px;
+grid-template-columns: 60px 60px;
+grid-template-rows: 90px 90px;
 flex-direction: row ;
 `
 
