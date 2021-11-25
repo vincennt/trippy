@@ -19,8 +19,6 @@ const City = styled.div`
     border-radius:  5px ;
     text-decoration : none
     
-    
-    
 `
 const CityContainer = styled.div`
     display : flex ;
