@@ -1,11 +1,12 @@
 import { React, useState, useEffect } from 'react';
 import styled from 'styled-components'
-import { useParams } from 'react-router-dom';
+import { useParams,Link  } from 'react-router-dom';
 import HotelMap from '../components/HotelMap';
 import arrayImage from './Img';
 // import { FaWifi, FaGlassMartiniAlt, FaSmokingBan, FaConciergeBell, FaLanguage, FaGlassCheers } from 'react-icons/fa';
 // import { MdRestaurantMenu, MdPets, MdOutlineAccessible, MdDryCleaning, MdFreeBreakfast, MdMeetingRoom, MdOutlineAir } from 'react-icons/md';
 // import { GiGymBag } from 'react-icons/gi';
+
 
 
 const Image = styled.img`
@@ -76,6 +77,7 @@ const HotelCard = props => {
 
                     console.log(src);
                     return (
+                         <Link key={hotel._id} to={`/hotels/${city}/${hotel._id}`}>
                         <Hotel key={hotel.name}>
                             <Image src={src}
 
@@ -84,7 +86,8 @@ const HotelCard = props => {
                             <p>{hotel.name}</p>
                             <p>{hotel.price}€</p>
                             <p>{hotel.stars} Stars</p>
-                        </Hotel>)
+                        </Hotel>
+                        </Link>)
                 })}
             </HotelContainer>
             <HotelMap hotels={hotels} />
