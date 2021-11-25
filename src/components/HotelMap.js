@@ -5,26 +5,29 @@ import HotelMarker from '../components/HotelMarker';
 
 const MapContainer = styled.div`
   height: 100vh;
-  width: 40%;
+  width: 50%;
   position: fixed;
-  right: 5%;
+  right: 2%;
 `
+
 const HotelMap = props => {
 
     if (!props.hotels) {
         return <p>Chargement...</p>
     }
+    // HOTELS [{}, {}]
+    // HOTEL [{}]
 
-    console.log('line 33 message', props);
+    console.log('Hotel Map props', props);
 
     return (
         <MapContainer>
             <GoogleMapReact
                 bootstrapURLKeys={{ key: "" }}
-                defaultCenter={{ lat: props.hotels.center.lat, lng: props.hotels.center.lon }}
+                defaultCenter={{ lat: props.center.lat, lng: props.center.lon }}
                 defaultZoom={12}
             >
-                {props.hotels.results.map(hotel => (
+                {props.hotels.map(hotel => (
                     <HotelMarker
                         lat={hotel.location.lat}
                         hotel={hotel}

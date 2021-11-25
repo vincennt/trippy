@@ -4,10 +4,13 @@ import { useParams,Link  } from 'react-router-dom';
 import HotelMap from '../components/HotelMap';
 import arrayImage from './Img';
 
-const Image = styled.img`
+
+
+const Image = styled.img`co
     background-image: url("src");
-    width: 320px ;
-    height : 300px;
+    width: 300px ;
+    height : 250px;
+    border-radius:  10px 10px 0 0;
 `
 
 const Map = styled.div`
@@ -18,14 +21,16 @@ flex-direction: row ;
 `
 
 const Hotel = styled.div`
-    width: 320px ;
+    width: 300px ;
     background-image: url("src");
     // background: linear-gradient(to bottom, #fff 50%, #e0e0e0 100%);
     border-radius: 10px;
-    border: 2px solid;
     font-weight: bold;
     margin: 0 1em;
-    padding: 20px 20px;
+    background-color: #959CA4;
+    padding: 0 0 10px  0;
+    margin: 20px;
+    height: 400px;
 `
 const HotelContainer = styled.div`
     display: grid;
@@ -44,8 +49,6 @@ const HotelCard = props => {
 
 
     // console.log(`form hotelcards : ${city}`);
-
-
 
     useEffect(() => {
         fetch(`https://trippy-konexio.herokuapp.com/api/hotels/city/${city}?page=${props.pageNumber}`)
@@ -74,10 +77,9 @@ const HotelCard = props => {
                     return (
                          <Link key={hotel._id} to={`/hotels/${city}/${hotel._id}`}>
                         <Hotel key={hotel.name}>
-                            <Image src={src}
-
-                                alt={hotel.name} />
-
+                            <Image
+                            src={src} 
+                            alt={hotel.name} />
                             <p>{hotel.name}</p>
                             <p>{hotel.price}€</p>
                             <p>{hotel.stars} Stars</p>
@@ -85,7 +87,7 @@ const HotelCard = props => {
                         </Link>)
                 })}
             </HotelContainer>
-            <HotelMap hotels={hotels} />
+            <HotelMap hotels={hotels.results} center={hotels.center}/>
         </Map>
     );
 };

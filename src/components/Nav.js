@@ -17,7 +17,7 @@ witdh : 100% ;
 background-color: #3068CF ; 
 display : flex ;
 align-items : center;
-gap: 30px
+gap: 30px;
 
 `
 const Nav = () => {
