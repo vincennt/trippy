@@ -20,7 +20,7 @@ const HotelInfo = () => {
             <p>Loading Data , please wait </p>
         )
    }
-   console.log(hotel.result);
+  
     return (
         <div>
              <div>

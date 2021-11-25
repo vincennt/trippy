@@ -47,7 +47,20 @@ const HotelCard = props => {
 
     // console.log(`form hotelcards : ${city}`);
 
-
+    const handleAddStorage=(id)=>{
+        const favorites = localStorage.getItem("ID")
+        if (!favorites){
+            localStorage.setItem("ID", JSON.stringify([id]))
+        }
+        else{
+            let array = JSON.parse(favorites)
+            array = [...array , id] 
+            console.log(array);
+            localStorage.setItem("ID", JSON.stringify(array))
+            
+        }
+        
+    }
 
     useEffect(() => {
         fetch(`https://trippy-konexio.herokuapp.com/api/hotels/city/${city}?page=${props.pageNumber}`)
@@ -61,7 +74,7 @@ const HotelCard = props => {
         )
 
     }
-    console.log(hotels.results);
+   
     return (
         <Map>
             <HotelContainer>
@@ -72,18 +85,20 @@ const HotelCard = props => {
                     }
                     else { src = 'https://media.istockphoto.com/photos/downtown-cleveland-hotel-entrance-and-waiting-taxi-cab-picture-id472899538?b=1&k=20&m=472899538&s=170667a&w=0&h=oGDM26vWKgcKA3ARp2da-H4St2dMEhJg23TTBeJgPDE=' }
 
-                    console.log(src);
+                    
                     return (
-                         <Link key={hotel._id} to={`/hotels/${city}/${hotel._id}`}>
+                         
                         <Hotel key={hotel.name}>
+                         <Link key={hotel._id} to={`/hotels/${city}/${hotel._id}`}>                                                        
                             <Image
                             src={src} 
                             alt={hotel.name} />
                             <p>{hotel.name}</p>
                             <p>{hotel.price}€</p>
                             <p>{hotel.stars} Stars</p>
-                        </Hotel>
-                        </Link>)
+                         </Link>
+                        <button onClick={()=>handleAddStorage(hotel._id)}>Add Fav</button>
+                        </Hotel>)
                 })}
             </HotelContainer>
             <HotelMap hotels={hotels} />

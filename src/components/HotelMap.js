@@ -15,7 +15,7 @@ const HotelMap = props => {
         return <p>Chargement...</p>
     }
 
-    console.log('line 33 message', props);
+    
 
     return (
         <MapContainer>
