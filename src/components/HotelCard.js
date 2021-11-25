@@ -3,11 +3,6 @@ import styled from 'styled-components'
 import { useParams,Link  } from 'react-router-dom';
 import HotelMap from '../components/HotelMap';
 import arrayImage from './Img';
-// import { FaWifi, FaGlassMartiniAlt, FaSmokingBan, FaConciergeBell, FaLanguage, FaGlassCheers } from 'react-icons/fa';
-// import { MdRestaurantMenu, MdPets, MdOutlineAccessible, MdDryCleaning, MdFreeBreakfast, MdMeetingRoom, MdOutlineAir } from 'react-icons/md';
-// import { GiGymBag } from 'react-icons/gi';
-
-
 
 const Image = styled.img`
     background-image: url("src");
