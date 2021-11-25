@@ -6,15 +6,11 @@ import arrayImage from './Img';
 
 
 
-const Image = styled.img`
+const Image = styled.img`co
     background-image: url("src");
     width: 300px ;
     height : 250px;
     border-radius:  10px 10px 0 0;
-`
-const Map = styled.div`
-    display: flex;
-    flex-direction: row
 `
 
 const Map = styled.div`
@@ -31,7 +27,10 @@ const Hotel = styled.div`
     border-radius: 10px;
     font-weight: bold;
     margin: 0 1em;
-    padding: 20px 20px;
+    background-color: #959CA4;
+    padding: 0 0 10px  0;
+    margin: 20px;
+    height: 400px;
 `
 const HotelContainer = styled.div`
     display: grid;
@@ -50,8 +49,6 @@ const HotelCard = props => {
 
 
     // console.log(`form hotelcards : ${city}`);
-
-
 
     useEffect(() => {
         fetch(`https://trippy-konexio.herokuapp.com/api/hotels/city/${city}?page=${props.pageNumber}`)
@@ -90,7 +87,7 @@ const HotelCard = props => {
                         </Link>)
                 })}
             </HotelContainer>
-            <HotelMap hotels={hotels} />
+            <HotelMap hotels={hotels.results} center={hotels.center}/>
         </Map>
     );
 };
