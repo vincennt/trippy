@@ -1,6 +1,7 @@
 import { React, useState, useEffect } from 'react';
 import styled from 'styled-components'
 import { useParams } from 'react-router-dom';
+import HotelMap from '../components/HotelMap';
 import arrayImage from './Img';
 import HotelMap from './HotelMap';
 
@@ -11,8 +12,10 @@ const Image = styled.img`
 `
 
 const Map = styled.div`
-display : flex ;
-    flex-direction: row ;
+display : grid;
+    grid-template-columns: 60px 60px;
+  grid-template-rows: 90px 90px;
+flex-direction: row ;
 `
 
 const Hotel = styled.div`
@@ -24,14 +27,15 @@ const Hotel = styled.div`
     font-weight: bold;
     margin: 0 1em;
     padding: 20px 20px;
-   
 `
 const HotelContainer = styled.div`
-    display : flex ;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin: 15px;
     flex-direction: column ;
     align-items: center;
     gap: 20px ;
-
+    
 `
 
 const HotelCard = props => {
