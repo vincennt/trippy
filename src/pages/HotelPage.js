@@ -17,9 +17,6 @@ const HotelPage = (props) => {
         <div>
             <Nav />
             <HotelInfo/>
-            <HotelMap>
-            
-            </HotelMap>
         </div>
     );
 };
