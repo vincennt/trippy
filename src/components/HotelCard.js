@@ -7,6 +7,7 @@ import arrayImage from './Img';
 // import { MdRestaurantMenu, MdPets, MdOutlineAccessible, MdDryCleaning, MdFreeBreakfast, MdMeetingRoom, MdOutlineAir } from 'react-icons/md';
 // import { GiGymBag } from 'react-icons/gi';
 
+
 const Image = styled.img`
     background-image: url("src");
     width: 320px ;
@@ -15,8 +16,8 @@ const Image = styled.img`
 
 const Map = styled.div`
 display : grid;
-    grid-template-columns: 60px 60px;
-  grid-template-rows: 90px 90px;
+grid-template-columns: 60px 60px;
+grid-template-rows: 90px 90px;
 flex-direction: row ;
 `
 
