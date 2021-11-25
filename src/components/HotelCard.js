@@ -3,29 +3,33 @@ import styled from 'styled-components'
 import { Link, useParams } from 'react-router-dom';
 import arrayImage from './Img';
 import ReactStars from "react-rating-stars-component";
+import HotelMap from './HotelMap'
 
 const Image = styled.img`
     background-image: url("src");
-    width: 320px ;
-    height : 300px;
+    width: 300px ;
+    height : 250px;
+    border-radius:  10px 10px 0 0;
 `
-
+const Map = styled.div`
+    display: flex;
+    flex-direction: row
+`
 const Hotel = styled.div`
-    width: 320px ;
+    width: 300px ;
     background-image: url("src");
     border-radius: 10px;
-    border: 2px solid;
     font-weight: bold;
     margin: 0 1em;
-    padding: 20px 20px;
-   
+    padding: 0 0 10px 0;
+    background-color: gray;
 `
 const HotelContainer = styled.div`
-    display : flex ;
-    flex-direction: column ;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     align-items: center;
-     gap: 20px ;
-
+    gap: 20px ;
+    margin: 20px;
 `
 const handleAddFav = () =>{
     console.log('add');
@@ -49,6 +53,7 @@ const HotelCard = props => {
     }
     console.log(hotels.results);
     return (
+        <Map>
         <HotelContainer>
             {hotels.results.map(hotel => {
                 var src = hotel.pictures.find(picture => arrayImage.includes(picture))
@@ -61,23 +66,28 @@ const HotelCard = props => {
                 return (
                     <Link key={hotel._id} to={`/hotels/${city}/${hotel._id}`}>
                     <Hotel key={hotel.name}>
+                        
                         <Image src={src}
 
                             alt={hotel.name} />
 
                         <p>{hotel.name}</p>
                         <p>{hotel.price} Euro</p>
+                        
                         <ReactStars
                             count={hotel.stars}
                             size={24}
                             color="#ffd700"
                         />
                         <button onClick={handleAddFav}>add fav</button>
+                        
                     </Hotel>
                     </Link>)
             })}
-
+         
         </HotelContainer>
+        <HotelMap hotels={hotels}/>
+        </Map>
     );
 };
 
