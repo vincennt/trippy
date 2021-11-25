@@ -1,13 +1,22 @@
-import { React, useState, useEffect } from 'react';
+import { React, useState, useEffect, Link } from 'react';
 import styled from 'styled-components'
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+
 import arrayImage from './Img';
 import ReactStars from "react-rating-stars-component";
+
 
 const Image = styled.img`
     background-image: url("src");
     width: 320px ;
     height : 300px;
+`
+
+const Map = styled.div`
+display : grid;
+grid-template-columns: 60px 60px;
+grid-template-rows: 90px 90px;
+flex-direction: row ;
 `
 
 const Hotel = styled.div`
@@ -18,22 +27,25 @@ const Hotel = styled.div`
     font-weight: bold;
     margin: 0 1em;
     padding: 20px 20px;
-   
 `
 const HotelContainer = styled.div`
-    display : flex ;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin: 15px;
     flex-direction: column ;
     align-items: center;
-     gap: 20px ;
-
+    gap: 20px ;
+    
 `
-const handleAddFav = () =>{
-    console.log('add');
-}
+
 const HotelCard = props => {
     const [hotels, setHotels] = useState(null)
     const { city } = useParams()
     console.log(`form hotelcards : ${city}`);
+
+    const handleAddFav = () =>{
+    console.log('add');
+}
 
     useEffect(() => {
         fetch(`https://trippy-konexio.herokuapp.com/api/hotels/city/${city}?page=${props.pageNumber}`)
@@ -76,7 +88,7 @@ const HotelCard = props => {
                     </Hotel>
                     </Link>)
             })}
-
+        <Map/>
         </HotelContainer>
     );
 };

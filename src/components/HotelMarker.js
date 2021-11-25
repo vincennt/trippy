@@ -30,7 +30,7 @@ const HotelMarker = props => {
                 lat={props.lat}
                 lng={props.lng}
             >
-            <Text>{props.hotel.price}</Text>
+            <Text>{props.hotel.price}€</Text>
             </BoxPrice>
         </Box>
 

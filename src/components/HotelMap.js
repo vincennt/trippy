@@ -1,10 +1,13 @@
 import GoogleMapReact from 'google-map-react';
 import styled from 'styled-components';
 import HotelMarker from '../components/HotelMarker';
+// import { useEffect, useState } from 'react';
 
 const MapContainer = styled.div`
   height: 100vh;
-  width: 100%;
+  width: 40%;
+  position: fixed;
+  right: 5%;
 `
 const HotelMap = props => {
 
