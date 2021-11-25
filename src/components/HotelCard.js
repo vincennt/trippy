@@ -1,9 +1,10 @@
 import { React, useState, useEffect } from 'react';
 import styled from 'styled-components'
-import { Link, useParams } from 'react-router-dom';
+import { useParams,Link  } from 'react-router-dom';
+import HotelMap from '../components/HotelMap';
 import arrayImage from './Img';
-import ReactStars from "react-rating-stars-component";
-import HotelMap from './HotelMap'
+
+
 
 const Image = styled.img`
     background-image: url("src");
@@ -15,29 +16,42 @@ const Map = styled.div`
     display: flex;
     flex-direction: row
 `
+
+const Map = styled.div`
+display : grid;
+grid-template-columns: 60px 60px;
+grid-template-rows: 90px 90px;
+flex-direction: row ;
+`
+
 const Hotel = styled.div`
     width: 300px ;
     background-image: url("src");
+    // background: linear-gradient(to bottom, #fff 50%, #e0e0e0 100%);
     border-radius: 10px;
     font-weight: bold;
     margin: 0 1em;
-    padding: 0 0 10px 0;
-    background-color: gray;
+    padding: 20px 20px;
 `
 const HotelContainer = styled.div`
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    margin: 15px;
+    flex-direction: column ;
     align-items: center;
     gap: 20px ;
-    margin: 20px;
+    
 `
-const handleAddFav = () =>{
-    console.log('add');
-}
+
 const HotelCard = props => {
+
     const [hotels, setHotels] = useState(null)
     const { city } = useParams()
-    console.log(`form hotelcards : ${city}`);
+
+
+    // console.log(`form hotelcards : ${city}`);
+
+
 
     useEffect(() => {
         fetch(`https://trippy-konexio.herokuapp.com/api/hotels/city/${city}?page=${props.pageNumber}`)
@@ -54,39 +68,29 @@ const HotelCard = props => {
     console.log(hotels.results);
     return (
         <Map>
-        <HotelContainer>
-            {hotels.results.map(hotel => {
-                var src = hotel.pictures.find(picture => arrayImage.includes(picture))
-                if (src) {
-                    src = 'https://trippy-konexio.herokuapp.com' + src
-                }
-                else { src = 'https://media.istockphoto.com/photos/downtown-cleveland-hotel-entrance-and-waiting-taxi-cab-picture-id472899538?b=1&k=20&m=472899538&s=170667a&w=0&h=oGDM26vWKgcKA3ARp2da-H4St2dMEhJg23TTBeJgPDE=' }
+            <HotelContainer>
+                {hotels.results.map(hotel => {
+                    var src = hotel.pictures.find(picture => arrayImage.includes(picture))
+                    if (src) {
+                        src = 'https://trippy-konexio.herokuapp.com' + src
+                    }
+                    else { src = 'https://media.istockphoto.com/photos/downtown-cleveland-hotel-entrance-and-waiting-taxi-cab-picture-id472899538?b=1&k=20&m=472899538&s=170667a&w=0&h=oGDM26vWKgcKA3ARp2da-H4St2dMEhJg23TTBeJgPDE=' }
 
-                console.log(src);
-                return (
-                    <Link key={hotel._id} to={`/hotels/${city}/${hotel._id}`}>
-                    <Hotel key={hotel.name}>
-                        
-                        <Image src={src}
-
+                    console.log(src);
+                    return (
+                         <Link key={hotel._id} to={`/hotels/${city}/${hotel._id}`}>
+                        <Hotel key={hotel.name}>
+                            <Image
+                            src={src} 
                             alt={hotel.name} />
-
-                        <p>{hotel.name}</p>
-                        <p>{hotel.price} Euro</p>
-                        
-                        <ReactStars
-                            count={hotel.stars}
-                            size={24}
-                            color="#ffd700"
-                        />
-                        <button onClick={handleAddFav}>add fav</button>
-                        
-                    </Hotel>
-                    </Link>)
-            })}
-         
-        </HotelContainer>
-        <HotelMap hotels={hotels}/>
+                            <p>{hotel.name}</p>
+                            <p>{hotel.price}€</p>
+                            <p>{hotel.stars} Stars</p>
+                        </Hotel>
+                        </Link>)
+                })}
+            </HotelContainer>
+            <HotelMap hotels={hotels} />
         </Map>
     );
 };
