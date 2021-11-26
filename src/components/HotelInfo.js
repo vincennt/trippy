@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import styled from 'styled-components'
 import HotelMap from './HotelMap';
 
-import { FaWifi, FaGlassMartiniAlt, FaSmokingBan, FaConciergeBell, FaLanguage, FaGlassCheers, FaSuitcaseRolling, FaHotTub } from 'react-icons/fa';
+import { FaWifi, FaGlassMartiniAlt, FaSmokingBan, FaConciergeBell, FaLanguage, FaGlassCheers, FaSuitcaseRolling, FaHotTub, FaShuttleVan} from 'react-icons/fa';
 import { MdRestaurantMenu, MdPets, MdOutlineAccessible, MdDryCleaning, MdFreeBreakfast, MdMeetingRoom, MdOutlineAir, MdPool, MdFamilyRestroom } from 'react-icons/md';
 import { GiGymBag } from 'react-icons/gi';
 
@@ -46,11 +46,11 @@ const HotelInfo = () => {
             commodity: "conciergerie"
         },
         {
-            icon: < FaSmokingBan />,
+            icon: <FaSmokingBan />,
             commodity: "non smoking"
         },
         {
-            icon: < MdDryCleaning />,
+            icon: <MdDryCleaning />,
             commodity: "dry cleaning"
         },
         {
@@ -108,6 +108,10 @@ const HotelInfo = () => {
         {
             icon: <MdMeetingRoom />,
             commodity: "suits"
+        },
+        {
+            icon: <FaShuttleVan />,
+            commodity: "shuttle"
         }
     ]
 
@@ -145,7 +149,7 @@ const HotelInfo = () => {
             {button ?
                 <>
                     <div>{hotel.commodities.filter(function (ele, pos) {
-                        return hotel.commodities.indexOf(ele) == pos;
+                        return hotel.commodities.indexOf(ele) === pos;
                     })
                         .map(element => {
                             let commodity = array.find(e => e.commodity === element)
@@ -176,34 +180,10 @@ const HotelInfo = () => {
                         <P>prix : {hotel.price}</P>
                     </div>
                 </>}
-
             <HotelMap hotels={[hotel]} center={hotel.location} />
-
         </div>
 
     );
 };
-
-            <div key={hotel.result.commodities}>
-                {hotel.result.commodities.map(commodity => (
-
-                    <Icons commodity={commodity}>
-                        <>
-                        <commodity>
-                            </>
-                    </Icons>
-                ))}
-                </div>
-                <div>
-                    <p>Stars : {hotel.result.stars}</p>
-                </div>
-                <div>
-                    <p>prix : {hotel.result.price}</p>
-                </div>
-         </div>
-         )
-};
-           
-           
-           
+                        
 export default HotelInfo;

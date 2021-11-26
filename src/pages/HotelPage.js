@@ -7,7 +7,7 @@ import HotelInfo from '../components/HotelInfo';
 // const pathname = window.location.pathname
 // console.log(pathname);
 
-const HotelPage = (props) => {
+const HotelPage = props => {
 
 //   const { city } = useParams();
     // console.log(city);
