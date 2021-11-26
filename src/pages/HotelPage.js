@@ -3,6 +3,7 @@ import Carousel from '../components/Carousel';
 import styled from 'styled-components'
 import Nav from '../components/Nav';
 import HotelMap from '../components/HotelMap';
+import HotelInfo from '../components/HotelInfo';
 
 const CarouselSize = styled.div`
     width: 100vh ; 
@@ -25,6 +26,7 @@ const HotelPage = (props) => {
             <HotelMap>
             
             </HotelMap>
+            <HotelInfo/>
         </div>
     );
 };

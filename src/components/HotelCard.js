@@ -1,39 +1,56 @@
 import { React, useState, useEffect } from 'react';
 import styled from 'styled-components'
-import { Link, useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
+import HotelMap from '../components/HotelMap';
 import arrayImage from './Img';
+
 import ReactStars from "react-rating-stars-component";
+
+
 
 const Image = styled.img`
     background-image: url("src");
-    width: 320px ;
-    height : 300px;
+    width: 300px ;
+    height : 250px;
+    border-radius:  10px 10px 0 0;
+`
+
+const Map = styled.div`
+display : grid;
+grid-template-columns: 60px 60px;
+grid-template-rows: 90px 90px;
+flex-direction: row ;
 `
 
 const Hotel = styled.div`
-    width: 320px ;
+    width: 300px ;
     background-image: url("src");
+    // background: linear-gradient(to bottom, #fff 50%, #e0e0e0 100%);
     border-radius: 10px;
-    border: 2px solid;
     font-weight: bold;
     margin: 0 1em;
-    padding: 20px 20px;
-   
+    background-color: #959CA4;
+    padding: 0 0 10px  0;
+    margin: 20px;
+    height: 400px;
 `
 const HotelContainer = styled.div`
-    display : flex ;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin: 15px;
     flex-direction: column ;
     align-items: center;
-     gap: 20px ;
-
+    gap: 20px ;
+    
 `
-const handleAddFav = () =>{
-    console.log('add');
-}
+
 const HotelCard = props => {
+
     const [hotels, setHotels] = useState(null)
     const { city } = useParams()
-    console.log(`form hotelcards : ${city}`);
+
+
+    // console.log(`form hotelcards : ${city}`);
 
     useEffect(() => {
         fetch(`https://trippy-konexio.herokuapp.com/api/hotels/city/${city}?page=${props.pageNumber}`)
@@ -49,8 +66,8 @@ const HotelCard = props => {
     }
     console.log(props);
     return (
+        <Map>
         <HotelContainer>
-            {props.children}
             {hotels.results.map(hotel => {
                 var src = hotel.pictures.find(picture => arrayImage.includes(picture))
                 if (src) {
@@ -61,25 +78,28 @@ const HotelCard = props => {
                 console.log(src);
                 return (
                     <Link key={hotel._id} to={`/hotels/${city}/${hotel._id}`}>
-                    <Hotel key={hotel.name}>
-                        <Image src={src}
+                        <Hotel key={hotel.name}>
+                            <Image
+                                src={src}
+                                alt={hotel.name} />
 
-                            alt={hotel.name} />
-
-                        <p>{hotel.name}</p>
-                        <p>{hotel.price} Euro</p>
-                        <ReactStars
-                            count={hotel.stars}
-                            size={24}
-                            color="#ffd700"    
-                        />
-                        <button onClick={handleAddFav}>add fav</button>
-                    </Hotel>
+                            <p>{hotel.name}</p>
+                            <p>{hotel.price} Euro</p>
+                            <ReactStars
+                                count={hotel.stars}
+                                size={24}
+                                color="#ffd700"
+                            />
+                            {/* <button onClick={handleAddFav}>add fav</button> */}
+                        </Hotel>
                     </Link>)
             })}
 
+                <HotelMap hotels={hotels.results} center={hotels.center} />
         </HotelContainer>
+            </Map>
     );
+
 };
 
 export default HotelCard;

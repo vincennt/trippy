@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import HotelMark from './components/HotelMark.js'
 
 const Box = styled.div`
     position: relative;
@@ -18,7 +19,7 @@ font-size: 20px;
 text-align: center;
 `
 
-const HotelMarker = props => {
+const HotelMark = props => {
     return (
         <Box>
             <BoxPrice
@@ -31,11 +32,11 @@ const HotelMarker = props => {
                 lat={props.lat}
                 lng={props.lng}
             >
-            <Text>{props.hotel.price}€</Text>
+            <Text>{props.hotel.name}</Text>
             </BoxPrice>
         </Box>
 
     );
 };
 
-export default HotelMarker;
+export default HotelMark;
