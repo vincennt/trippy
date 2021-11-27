@@ -18,7 +18,7 @@ const HotelMap = props => {
     // HOTELS [{}, {}]
     // HOTEL [{}]
 
-    console.log('Hotel Map props', props);
+    
 
     return (
         <MapContainer>
