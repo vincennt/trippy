@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import HotelMap from './HotelMap';
 
 
-import { FaWifi, FaGlassMartiniAlt, FaSmokingBan, FaConciergeBell, FaLanguage, FaGlassCheers, FaSuitcaseRolling, FaHotTub } from 'react-icons/fa';
+import { FaParking, FaWifi, FaGlassMartiniAlt, FaSmokingBan, FaConciergeBell, FaLanguage, FaGlassCheers, FaSuitcaseRolling, FaHotTub } from 'react-icons/fa';
 import { MdRestaurantMenu, MdPets, MdOutlineAccessible, MdDryCleaning, MdFreeBreakfast, MdMeetingRoom, MdOutlineAir, MdPool, MdFamilyRestroom } from 'react-icons/md';
 import { GiGymBag } from 'react-icons/gi';
 
