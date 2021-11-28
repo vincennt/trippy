@@ -120,7 +120,6 @@ const HotelInfo = () => {
         fetch(`https://trippy-konexio.herokuapp.com/api/hotels/${id}`)
             .then(response => response.json())
             .then(data => setHotel(data.result))
-
     }, [])
 
 
@@ -157,10 +156,10 @@ const HotelInfo = () => {
                             if (commodity === undefined) {
                                 return <p>{element}</p>
                             } else {
-                                return <P>
+                                return <p>
                                     {commodity.icon}
                                     {element}
-                                </P>
+                                </p>
                             }
                             // console.log("- hotel.commodities element ===========> ", element);
                         })}
