@@ -15,9 +15,7 @@ const HotelMap = props => {
     if (!props.hotels) {
         return <p>Chargement...</p>
     }
-    // HOTELS [{}, {}]
-    // HOTEL [{}]
-
+    
     console.log('Hotel Map props', props);
 
     return (

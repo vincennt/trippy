@@ -13,23 +13,17 @@ top: 95%;
 z-index:1
 }
 `
-
 const Button =styled.button`
 
     width: 30px;
     height: 30px;
     border-radius: 50px;
     border: black , solid ,2px;
-
 `
-
-
-
-
-
 const Hotels = (props) => {
 
     const [page, setPage] = useState(0);
+   
 
 
     function handleClick(page) {
@@ -43,7 +37,7 @@ const Hotels = (props) => {
         <>
         <div>
             <Nav />
-            <HotelCard pageNumber={page} />
+            <HotelCard pageNumber={page}  />
         </div>
         <BouttonContainer>
                 <Button onClick={() => handleClick(1)}>1</Button>

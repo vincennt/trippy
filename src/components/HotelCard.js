@@ -1,10 +1,8 @@
 import { React, useState, useEffect } from 'react';
 import styled from 'styled-components'
-import { useParams,Link  } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import HotelMap from '../components/HotelMap';
 import arrayImage from './Img';
-
-
 
 const Image = styled.img`co
     background-image: url("src");
@@ -19,7 +17,6 @@ grid-template-columns: 60px 60px;
 grid-template-rows: 90px 90px;
 flex-direction: row ;
 `
-
 const Hotel = styled.div`
     width: 300px ;
     background-image: url("src");
@@ -46,9 +43,7 @@ const HotelCard = props => {
 
     const [hotels, setHotels] = useState(null)
     const { city } = useParams()
-
-
-    // console.log(`form hotelcards : ${city}`);
+   // console.log(`form hotelcards : ${city}`);
 
     useEffect(() => {
         fetch(`https://trippy-konexio.herokuapp.com/api/hotels/city/${city}?page=${props.pageNumber}`)
@@ -56,13 +51,13 @@ const HotelCard = props => {
             .then(data => setHotels(data))
     }, [city, props.pageNumber])
 
+
     if (!hotels) {
         return (
             <p>Loading Data , please wait </p>
         )
-
     }
-    console.log(hotels.results);
+
     return (
         <Map>
             <HotelContainer>
@@ -74,20 +69,21 @@ const HotelCard = props => {
                     else { src = 'https://media.istockphoto.com/photos/downtown-cleveland-hotel-entrance-and-waiting-taxi-cab-picture-id472899538?b=1&k=20&m=472899538&s=170667a&w=0&h=oGDM26vWKgcKA3ARp2da-H4St2dMEhJg23TTBeJgPDE=' }
 
                     console.log(src);
+           
                     return (
-                         <Link key={hotel._id} to={`/hotels/${city}/${hotel._id}`}>
-                        <Hotel key={hotel.name}>
-                            <Image
-                            src={src} 
-                            alt={hotel.name} />
-                            <p>{hotel.name}</p>
-                            <p>{hotel.price}€</p>
-                            <p>{hotel.stars} Stars</p>
-                        </Hotel>
+                        <Link key={hotel._id} to={`/hotels/${city}/${hotel._id}`}>
+                            <Hotel key={hotel.name} >
+                                <Image
+                                    src={src}
+                                    alt={hotel.name} />
+                                <p>{hotel.name}</p>
+                                <p>{hotel.price}€</p>
+                                <p>{hotel.stars} Stars</p>
+                            </Hotel>
                         </Link>)
                 })}
             </HotelContainer>
-            <HotelMap hotels={hotels.results} center={hotels.center}/>
+            <HotelMap hotels={hotels.results} center={hotels.center} />
         </Map>
     );
 };
