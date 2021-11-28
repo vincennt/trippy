@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import styled from 'styled-components'
 import HotelMap from './HotelMap';
 
-import { FaWifi, FaGlassMartiniAlt, FaSmokingBan, FaConciergeBell, FaLanguage, FaGlassCheers, FaSuitcaseRolling, FaHotTub, FaShuttleVan} from 'react-icons/fa';
+import { FaWifi, FaGlassMartiniAlt, FaSmokingBan, FaConciergeBell, FaLanguage, FaGlassCheers, FaSuitcaseRolling, FaHotTub, FaShuttleVan } from 'react-icons/fa';
 import { MdRestaurantMenu, MdPets, MdOutlineAccessible, MdDryCleaning, MdFreeBreakfast, MdMeetingRoom, MdOutlineAir, MdPool, MdFamilyRestroom } from 'react-icons/md';
 import { GiGymBag } from 'react-icons/gi';
 
@@ -138,7 +138,7 @@ const HotelInfo = () => {
     }
 
 
-    console.log("HotelInfo state hotel ", hotel);
+
     return (
         <div>
             <div>
@@ -156,10 +156,10 @@ const HotelInfo = () => {
                             if (commodity === undefined) {
                                 return <p>{element}</p>
                             } else {
-                                return <p>
-                                    {commodity.icon}
-                                    {element}
-                                </p>
+                                return  <p>
+                                            {commodity.icon}
+                                            {element}
+                                        </p>
                             }
                             // console.log("- hotel.commodities element ===========> ", element);
                         })}
@@ -173,10 +173,10 @@ const HotelInfo = () => {
                 </> :
                 <>
                     <div>
-                        <P>Stars : {hotel.stars}</P>
+                        <p>Stars : {hotel.stars}</p>
                     </div>
                     <div>
-                        <P>prix : {hotel.price}</P>
+                        <p>prix : {hotel.price}</p>
                     </div>
                 </>}
             <HotelMap hotels={[hotel]} center={hotel.location} />
@@ -184,5 +184,5 @@ const HotelInfo = () => {
 
     );
 };
-                        
+
 export default HotelInfo;

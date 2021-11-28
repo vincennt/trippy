@@ -4,21 +4,17 @@ import HotelMarker from '../components/HotelMarker';
 // import { useEffect, useState } from 'react';
 
 const MapContainer = styled.div`
-  height: 100vh;
-  width: 50%;
-  position: fixed;
-  right: 2%;
+  height: 50vh;
+  width: 100%;
+  
+  
 `
 
 const HotelMap = props => {
 
     if (!props.hotels) {
         return <p>Chargement...</p>
-    }
-    // HOTELS [{}, {}]
-    // HOTEL [{}]
-
-    console.log('Hotel Map props', props);
+    }    
 
     return (
         <MapContainer>
