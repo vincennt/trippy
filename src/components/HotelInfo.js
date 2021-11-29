@@ -3,34 +3,42 @@ import { useParams } from 'react-router';
 import { useState, useEffect } from 'react';
 import styled from 'styled-components'
 import HotelMap from './HotelMap';
+import Room from '../components/Room';
 
-import { FaWifi, FaGlassMartiniAlt, FaSmokingBan, FaConciergeBell, FaLanguage, FaGlassCheers, FaSuitcaseRolling, FaHotTub, FaShuttleVan } from 'react-icons/fa';
+import { FaParking, FaWifi, FaGlassMartiniAlt, FaSmokingBan, FaConciergeBell, FaLanguage, FaGlassCheers, FaSuitcaseRolling, FaHotTub } from 'react-icons/fa';
 import { MdRestaurantMenu, MdPets, MdOutlineAccessible, MdDryCleaning, MdFreeBreakfast, MdMeetingRoom, MdOutlineAir, MdPool, MdFamilyRestroom } from 'react-icons/md';
 import { GiGymBag } from 'react-icons/gi';
 
 
-
 const Button = styled.button`
-    background-color: #4CAF50;
+    background-color: #69B1AE;
     border: none;
     color: white;
     padding: 10px 12px;
     text-align: center;
     font-size: 16px;
     border-radius: 15px;
-    margin: 8px;
+    margin-left: 45px;
+    cursor: pointer;
 `
-const H1 = styled.h1`  
-    margin: 6px;
+const H3 = styled.h3` 
+    @import url('https://fonts.googleapis.com/css2?family=PT+Sans&display=swap');
+    font-family: 'PT Sans', sans-serif; 
+    margin-left: 45px;
 `
 const P = styled.p`  
-    margin: 6px;
+    margin-left: 45px;
+    padding: 1px;
+    @import url('https://fonts.googleapis.com/css2?family=PT+Sans&display=swap');
+    font-family: 'PT Sans', sans-serif; 
 `
 
 const HotelInfo = () => {
     const { id } = useParams()
     const [hotel, setHotel] = useState(null)
     const [button, setButton] = useState(false)
+    const [room, setRoom] = useState(null)
+    const [buttonRoom, setButtonRoom] = useState(false)
 
     const array = [
         {
@@ -94,24 +102,20 @@ const HotelInfo = () => {
             commodity: "gym"
         },
         {
-            icon: <GiGymBag />,
-            commodity: "gym"
-        },
-        {
             icon: <MdPool />,
             commodity: "swimming pool"
         },
         {
             icon: <FaHotTub />,
-            commodity: "swimming pool"
+            commodity: "spa"
         },
         {
             icon: <MdMeetingRoom />,
-            commodity: "suits"
+            commodity: "meeting rooms"
         },
         {
-            icon: <FaShuttleVan />,
-            commodity: "shuttle"
+            icon: <FaParking />,
+            commodity: "parking"
         }
     ]
 
@@ -122,11 +126,26 @@ const HotelInfo = () => {
             .then(data => setHotel(data.result))
     }, [])
 
+    useEffect(() => {
+        fetch(`https://trippy-konexio.herokuapp.com/api/hotels/${id}/rooms`)
+            .then(response => response.json())
+            .then(data => setRoom(data.results))
+      
+    }, [])
+
 
     if (!hotel) {
         return (
             <p>Loading Data , please wait </p>
         )
+    }
+
+    const handleRoom = () => {
+        if (!buttonRoom) {
+            setButtonRoom(true)
+        } else {
+            setButtonRoom(false)
+        }
     }
 
     const handleButton = () => {
@@ -136,14 +155,20 @@ const HotelInfo = () => {
             setButton(false)
         }
     }
-
-
-
+    console.log(buttonRoom)
+    console.log(room)
+    
     return (
         <div>
             <div>
-                <H1>{hotel.name}</H1>
+                <H3>{hotel.name}</H3>
             </div>
+            <Button onClick={handleRoom}>Liste des chambres</Button>
+            { buttonRoom ?
+            <>
+            {room.map (room =>  {
+                return ( <Room room={room}/> )         
+            })}
             <Button onClick={handleButton}>Options</Button>
             {button ?
                 <>
@@ -154,21 +179,21 @@ const HotelInfo = () => {
                             let commodity = array.find(e => e.commodity === element)
 
                             if (commodity === undefined) {
-                                return <p>{element}</p>
+                                return <P>{element}</P>
                             } else {
-                                return  <p>
-                                            {commodity.icon}
-                                            {element}
-                                        </p>
+                                return (
+                                    <>
+                                        <P>{commodity.icon} {element}</P>
+
+                                    </>)
                             }
-                            // console.log("- hotel.commodities element ===========> ", element);
                         })}
                     </div>
                     <div>
-                        <p>Stars : {hotel.stars}</p>
+                        <P>Stars : {hotel.stars}</P>
                     </div>
                     <div>
-                        <p>prix : {hotel.price}</p>
+                        <P>Prix : {hotel.price}</P>
                     </div>
                 </> :
                 <>
@@ -176,12 +201,51 @@ const HotelInfo = () => {
                         <p>Stars : {hotel.stars}</p>
                     </div>
                     <div>
-                        <p>prix : {hotel.price}</p>
+                        <P>Prix : {hotel.price}</P>
                     </div>
                 </>}
             <HotelMap hotels={[hotel]} center={hotel.location} />
-        </div>
+            </> :
+            <>
+            <Button onClick={handleButton}>Options</Button>
+            {button ?
+                <>
+                    <div>{hotel.commodities.filter(function (ele, pos) {
+                        return hotel.commodities.indexOf(ele) == pos;
+                    })
+                        .map(element => {
+                            let commodity = array.find(e => e.commodity === element)
 
+                            if (commodity === undefined) {
+                                return <P>{element}</P>
+                            } else {
+                                return (
+                                    <>
+                                        <P>{commodity.icon} {element}</P>
+
+                                    </>)
+                            }
+                        })}
+                    </div>
+                    <div>
+                        <P>Stars : {hotel.stars}</P>
+                    </div>
+                    <div>
+                        <P>Prix : {hotel.price}</P>
+                    </div>
+                </> :
+                <>
+                    <div>
+                        <P>Stars : {hotel.stars}</P>
+                    </div>
+                    <div>
+                        <P>Prix : {hotel.price}</P>
+                    </div>
+                </>}
+            <HotelMap hotels={[hotel]} center={hotel.location} />
+            </>}
+        </div>
+        
     );
 };
 

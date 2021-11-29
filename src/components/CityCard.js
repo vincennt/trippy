@@ -6,9 +6,11 @@ import { Link } from 'react-router-dom';
 
 
 const Para = styled.p`
-font-size : 24px ; 
-font-weight : 700 ; 
-margin: 0;
+    @import url('https://fonts.googleapis.com/css2?family=PT+Sans&display=swap');
+    font-family: 'PT Sans', sans-serif;
+    font-size : 24px ; 
+    font-weight : 400 ; 
+    margin: 0;
 `
 
 const City = styled.div`
@@ -16,25 +18,19 @@ const City = styled.div`
     flex-direction: column ;
     width: 320px ;
     margin-bottom : 40px;
-    
-    
 `
 const Image = styled.img`co
     background-image: url("src");
     width: 100%;
     height : 250px;
     border-radius:  5px 5px ;
-    
-    
 `
 const CityContainer = styled.div`
     display : flex ;
     flex-direction: column ;
     align-items: center;
-    gap: 10px ;
-
+     gap: 10px ;
 `
-
 
 const CityCard = () => {
     // const { city } = useParams()
@@ -62,17 +58,17 @@ const CityCard = () => {
 
     return (
         <CityContainer>
-            {citys.cities.map((city,i)=> (<>
-            
-            <City>
-                <Link key={city.name} to={`/hotels/${city.slug}`} >
-                <Image src={`https://trippy-konexio.herokuapp.com/${city.source}`} alt={city.slug}/>                
-            </Link>
-                <Para>{city.name}</Para>
-            </City>
-            </>)         
-            )}
-        </CityContainer>
+                {citys.cities.map((city,i)=> (<>
+                
+                <City>
+                    <Link key={city.name} to={`/hotels/${city.slug}`} >
+                    <Image src={`https://trippy-konexio.herokuapp.com/${city.source}`} alt={city.slug}/>                
+                </Link>
+                    <Para>{city.name}</Para>
+                </City>
+                </>)         
+                )}
+            </CityContainer>
     );
 };
 
