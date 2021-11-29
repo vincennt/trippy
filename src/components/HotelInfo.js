@@ -13,7 +13,10 @@ import { MdRestaurantMenu, MdPets, MdOutlineAccessible, MdDryCleaning, MdFreeBre
 import { GiGymBag } from 'react-icons/gi';
 
 
-
+const Contain =styled.div`
+width :600px;
+height : 700px
+`
 
 const Button = styled.button`
     background-color: #69B1AE;
@@ -170,7 +173,9 @@ const HotelInfo = () => {
             <div>
                 <H3>{hotel.name}</H3>
             </div>
+            <Contain>
                 <Carousel />
+            </Contain> 
             {/* <div>
             </div> */}
             

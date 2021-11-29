@@ -15,8 +15,9 @@ const Carousel = (props) => {
             naturalSlideWidth={15}
             naturalSlideHeight={10}
             totalSlides={11}
-            isPlaying={true}
-            interva={3000}
+            isPlaying
+            interval={3000}
+            infinite
         >
             <ButtonBack>Back</ButtonBack>
             <ButtonNext>Next</ButtonNext>
