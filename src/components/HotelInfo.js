@@ -3,6 +3,9 @@ import { useParams } from 'react-router';
 import { useState, useEffect } from 'react';
 import styled from 'styled-components'
 import HotelMap from './HotelMap';
+import Carousel from '../components/Carousel';
+import ReactStars from 'react-rating-stars-component';
+
 import Room from '../components/Room';
 
 import { FaParking, FaWifi, FaGlassMartiniAlt, FaSmokingBan, FaConciergeBell, FaLanguage, FaGlassCheers, FaSuitcaseRolling, FaHotTub } from 'react-icons/fa';
@@ -12,6 +15,11 @@ import { GiGymBag } from 'react-icons/gi';
 const Div = styled.div`
 display: grid;
 grid-template-columns: 1fr 1fr 1fr;
+`
+
+const Contain = styled.div`
+width :600px;
+height : 700px
 `
 
 const Button = styled.button`
@@ -29,6 +37,7 @@ const H3 = styled.h3`
     @import url('https://fonts.googleapis.com/css2?family=PT+Sans&display=swap');
     font-family: 'PT Sans', sans-serif; 
     margin-left: 45px;
+    margin-bottom: 250px;
 `
 const P = styled.p`  
     margin-left: 45px;
@@ -167,19 +176,23 @@ const HotelInfo = () => {
             <div>
                 <H3>{hotel.name}</H3>
             </div>
+            <Contain>
+                <Carousel />
+            </Contain>
+            {/* <div>
+            </div> */}
+
             <Button onClick={handleRoom}>Liste des chambres</Button>
             {buttonRoom ?
                 <>
                     {room.map(room => {
-                        // <Div>
-                            return (<Room room={room} /> )
-                        {/* </Div> */}
+                        return (<Room room={room} />)
                     })}
                     <Button onClick={handleButton}>Options</Button>
                     {button ?
                         <>
                             <div>{hotel.commodities.filter(function (ele, pos) {
-                                return hotel.commodities.indexOf(ele) === pos;
+                                return hotel.commodities.indexOf(ele) == pos;
                             })
                                 .map(element => {
                                     let commodity = array.find(e => e.commodity === element)
@@ -196,7 +209,13 @@ const HotelInfo = () => {
                                 })}
                             </div>
                             <div>
-                                <P>Stars : {hotel.stars}</P>
+                                <P>Stars : <ReactStars
+                                    count={5}
+                                    size={24}
+                                    value={hotel.stars}
+                                    edit={true}
+                                    activeColor="#ffd700"
+                                /></P>
                             </div>
                             <div>
                                 <P>Prix : {hotel.price}</P>
@@ -204,7 +223,13 @@ const HotelInfo = () => {
                         </> :
                         <>
                             <div>
-                                <p>Stars : {hotel.stars}</p>
+                                <P>Stars :  <ReactStars
+                                    count={5}
+                                    size={24}
+                                    value={hotel.stars}
+                                    edit={true}
+                                    activeColor="#ffd700"
+                                /></P>
                             </div>
                             <div>
                                 <P>Prix : {hotel.price}</P>

@@ -66,7 +66,6 @@ const HotelCard = props => {
         <Map>
             
             <HotelContainer>
-
                 {hotels.results.map(hotel => {
                     var src = hotel.pictures.find(picture => arrayImage.includes(picture))
                     if (src) {
@@ -81,6 +80,7 @@ const HotelCard = props => {
             <HotelsMap hotels={hotels}  selectHotel={selectHotel} setSelectHotel={setSelectHotel} />
         </Map>
     );
+
 };
 
 export default HotelCard;

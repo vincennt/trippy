@@ -10,9 +10,13 @@ align-items : center
 `
 const BouttonContainer = styled.div`
 display : flex ; 
+<<<<<<< HEAD
+gap : 4px;
+=======
 margin: 10px;
 margin-left: 35px;
 gap 4px;
+>>>>>>> 004f1ba35905119994c189090e2d722c628955fa
 `
 const Div = styled.div
     `width: 100%;`
@@ -33,7 +37,8 @@ const Button = styled.button`
 	padding:6px 24px;
 	text-decoration:none;
 	text-shadow:0px 1px 0px #ffffff;
-}
+
+
 .myButton:hover {
 	background:linear-gradient(to bottom, #f6f6f6 5%, #ffffff 100%);
 	background-color:#f6f6f6;
