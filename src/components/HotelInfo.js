@@ -17,7 +17,7 @@ display: grid;
 grid-template-columns: 1fr 1fr 1fr;
 `
 
-const Contain =styled.div`
+const Contain = styled.div`
 width : 70%;
 height : auto;
 margin: 100px auto;
@@ -186,9 +186,14 @@ const HotelInfo = () => {
             <Button onClick={handleRoom}>Liste des chambres</Button>
             {buttonRoom ?
                 <>
+                <Div>
                     {room.map(room => {
+
                         return (<Room room={room} />)
-                    })}
+                    }
+                    )}
+
+                </Div>
                     <Button onClick={handleButton}>Options</Button>
                     {button ?
                         <>
