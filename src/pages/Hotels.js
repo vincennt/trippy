@@ -31,7 +31,8 @@ const Button =styled.button`
 	padding:6px 24px;
 	text-decoration:none;
 	text-shadow:0px 1px 0px #ffffff;
-}
+
+
 .myButton:hover {
 	background:linear-gradient(to bottom, #f6f6f6 5%, #ffffff 100%);
 	background-color:#f6f6f6;
