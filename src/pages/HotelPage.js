@@ -3,7 +3,7 @@ import Nav from '../components/Nav';
 import HotelInfo from '../components/HotelInfo';
 
 
-const HotelPage = (props) => {
+const HotelPage = props => {
 
     //   const { city } = useParams();
     // console.log(city);
