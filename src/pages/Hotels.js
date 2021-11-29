@@ -43,14 +43,10 @@ const Button =styled.button`
 
 
 `
-
-
-
-
-
 const Hotels = (props) => {
 
     const [page, setPage] = useState(0);
+   
 
 
     function handleClick(page) {

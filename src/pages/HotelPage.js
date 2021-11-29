@@ -1,7 +1,6 @@
 import React from 'react';
 
 import Nav from '../components/Nav';
-
 import HotelInfo from '../components/HotelInfo';
 
 // const pathname = window.location.pathname

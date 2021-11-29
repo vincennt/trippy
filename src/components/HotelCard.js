@@ -1,6 +1,6 @@
 import { React, useState, useEffect } from 'react';
 import styled from 'styled-components'
-import { useParams,Link  } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import HotelMap from '../components/HotelMap';
 import arrayImage from './Img';
 
@@ -21,7 +21,6 @@ const Image = styled.img`co
 
 const Map = styled.div`
 `
-
 const Hotel = styled.div`
 display :flex;
 flex-direction : column;
@@ -74,9 +73,7 @@ const HotelCard = props => {
 
     const [hotels, setHotels] = useState(null)
     const { city } = useParams()
-
-
-    // console.log(`form hotelcards : ${city}`);
+   // console.log(`form hotelcards : ${city}`);
 
     const handleAddStorage=(id)=>{
         const favorites = localStorage.getItem("ID")
@@ -99,11 +96,11 @@ const HotelCard = props => {
             .then(data => setHotels(data))
     }, [city, props.pageNumber])
 
+
     if (!hotels) {
         return (
             <p>Loading Data , please wait </p>
         )
-
     }
    
     return (
