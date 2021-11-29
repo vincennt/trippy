@@ -3,6 +3,12 @@ import HotelCard from '../components/HotelCard';
 import Nav from '../components/Nav';
 import styled from 'styled-components';
 
+const Divee =styled.div`
+
+
+
+`
+
 const Flex = styled.div`
 display : flex;
 flex-direction :column;
@@ -10,13 +16,10 @@ align-items : center
 `
 const BouttonContainer = styled.div`
 display : flex ; 
-<<<<<<< HEAD
-gap : 4px;
-=======
+justify-content: center;
 margin: 10px;
 margin-left: 35px;
 gap 4px;
->>>>>>> 004f1ba35905119994c189090e2d722c628955fa
 `
 const Div = styled.div
     `width: 100%;`
@@ -62,7 +65,7 @@ const Hotels = (props) => {
     //  const { city } = useParams()
     // console.log(`"from hotel:"${city}`);
     return (
-        <>
+        <Divee>
         <Flex>
             <Div>
                 <Nav />
@@ -74,8 +77,8 @@ const Hotels = (props) => {
          <Button onClick={() => handleClick(2)}>2</Button>
          <Button onClick={() => handleClick(3)}>3</Button>
          <Button onClick={() => handleClick(4)}>4</Button>
-     </BouttonContainer>
-     </>
+        </BouttonContainer>
+     </Divee>
     )
 }
 

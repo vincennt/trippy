@@ -7,7 +7,12 @@ import Hotel from './Hotel'
 
 const Map = styled.div`
 display :flex;
-flex-direction : row
+flex-direction : column;
+width : 100%;
+@media (min-width : 425px){
+display :flex;
+flex-direction : row;
+}
 `
 
 const HotelContainer = styled.div`
@@ -64,7 +69,6 @@ const HotelCard = props => {
 
     return (
         <Map>
-            
             <HotelContainer>
                 {hotels.results.map(hotel => {
                     var src = hotel.pictures.find(picture => arrayImage.includes(picture))
