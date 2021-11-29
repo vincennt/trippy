@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import styled from 'styled-components'
+import  ReactStars from "react-rating-stars-component";
 
 const Hotel = styled.div`
     display :flex;
@@ -78,7 +79,14 @@ const HotelScroll = props => {
             <Dive>
                 <P>{props.hotel.name}</P>
                 <P>{props.hotel.price}€</P>
-                <P>{props.hotel.stars} Stars</P>
+                <ReactStars
+                                    count={5}
+                                    size={24}
+                                    value={props.hotel.stars}
+                                    edit={true}
+                                    activeColor="#ffd700"
+                                />
+              
             </Dive>
             
             <Button onClick={() => props.handleAddStorage(props.hotel._id)}>Add Fav</Button>

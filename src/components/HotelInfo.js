@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import styled from 'styled-components'
 import HotelMap from './HotelMap';
 import Room from '../components/Room';
+import ReactStars from "react-rating-stars-component";
 
 import { FaParking, FaWifi, FaGlassMartiniAlt, FaSmokingBan, FaConciergeBell, FaLanguage, FaGlassCheers, FaSuitcaseRolling, FaHotTub } from 'react-icons/fa';
 import { MdRestaurantMenu, MdPets, MdOutlineAccessible, MdDryCleaning, MdFreeBreakfast, MdMeetingRoom, MdOutlineAir, MdPool, MdFamilyRestroom } from 'react-icons/md';
@@ -21,10 +22,12 @@ const Button = styled.button`
     margin-left: 45px;
     cursor: pointer;
 `
-const H3 = styled.h3` 
+const H2 = styled.h3` 
     @import url('https://fonts.googleapis.com/css2?family=PT+Sans&display=swap');
     font-family: 'PT Sans', sans-serif; 
     margin-left: 45px;
+    font-weight:lighter;
+    
 `
 const P = styled.p`  
     margin-left: 45px;
@@ -131,7 +134,7 @@ const HotelInfo = () => {
         fetch(`https://trippy-konexio.herokuapp.com/api/hotels/${id}/rooms`)
             .then(response => response.json())
             .then(data => setRoom(data.results))
-      
+
     }, [])
 
 
@@ -158,95 +161,119 @@ const HotelInfo = () => {
     }
     console.log(buttonRoom)
     console.log(room)
-    
+
     return (
         <div>
             <div>
-                <H3>{hotel.name}</H3>
+                <H2>{hotel.name}</H2>
             </div>
             <Button onClick={handleRoom}>Liste des chambres</Button>
-            { buttonRoom ?
-            <>
-            {room.map (room =>  {
-                return ( <Room room={room}/> )         
-            })}
-            <Button onClick={handleButton}>Options</Button>
-            {button ?
+            {buttonRoom ?
                 <>
-                    <div>{hotel.commodities.filter(function (ele, pos) {
-                        return hotel.commodities.indexOf(ele) == pos;
-                    })
-                        .map(element => {
-                            let commodity = array.find(e => e.commodity === element)
+                    {room.map(room => {
+                        return (<Room room={room} />)
+                    })}
+                    <Button onClick={handleButton}>Options</Button>
+                    {button ?
+                        <>
+                            <div>{hotel.commodities.filter(function (ele, pos) {
+                                return hotel.commodities.indexOf(ele) == pos;
+                            })
+                                .map(element => {
+                                    let commodity = array.find(e => e.commodity === element)
 
-                            if (commodity === undefined) {
-                                return <P>{element}</P>
-                            } else {
-                                return (
-                                    <>
-                                        <P>{commodity.icon} {element}</P>
+                                    if (commodity === undefined) {
+                                        return <P>{element}</P>
+                                    } else {
+                                        return (
+                                            <>
+                                                <P>{commodity.icon} {element}</P>
 
-                                    </>)
-                            }
-                        })}
-                    </div>
-                    <div>
-                        <P>Stars : {hotel.stars}</P>
-                    </div>
-                    <div>
-                        <P>Prix : {hotel.price}</P>
-                    </div>
+                                            </>)
+                                    }
+                                })}
+                            </div>
+                            <div>
+                                <P> Stars : <ReactStars
+                                    count={5}
+                                    size={24}
+                                    value={hotel.stars}
+                                    edit={true}
+                                    activeColor="#ffd700"
+                                /></P>
+                            </div>
+                            <div>
+                                <P>Prix : {hotel.price}</P>
+                            </div>
+                        </> :
+                        <>
+                            <div>
+                                <P> Stars : <ReactStars
+                                    count={5}
+                                    size={24}
+                                    value={hotel.stars}
+                                    edit={true}
+                                    activeColor="#ffd700"
+                                /></P>
+                            </div>
+                            <div>
+                                <P>Prix : {hotel.price}</P>
+                            </div>
+                        </>}
+                    <HotelMap hotels={[hotel]} center={hotel.location} />
                 </> :
                 <>
-                    <div>
-                        <P>Stars : {hotel.stars}</P>
-                    </div>
-                    <div>
-                        <P>Prix : {hotel.price}</P>
-                    </div>
-                </>}
-            <HotelMap hotels={[hotel]} center={hotel.location} />
-            </> :
-            <>
-            <Button onClick={handleButton}>Options</Button>
-            {button ?
-                <>
-                    <div>{hotel.commodities.filter(function (ele, pos) {
-                        return hotel.commodities.indexOf(ele) == pos;
-                    })
-                        .map(element => {
-                            let commodity = array.find(e => e.commodity === element)
+                    <Button onClick={handleButton}>Options</Button>
+                    {button ?
+                        <>
+                            <div>{hotel.commodities.filter(function (ele, pos) {
+                                return hotel.commodities.indexOf(ele) == pos;
+                            })
+                                .map(element => {
+                                    let commodity = array.find(e => e.commodity === element)
 
-                            if (commodity === undefined) {
-                                return <P>{element}</P>
-                            } else {
-                                return (
-                                    <>
-                                        <P>{commodity.icon} {element}</P>
+                                    if (commodity === undefined) {
+                                        return <P>{element}</P>
+                                    } else {
+                                        return (
+                                            <>
+                                                <P>{commodity.icon} {element}</P>
 
-                                    </>)
-                            }
-                        })}
-                    </div>
-                    <div>
-                        <P>Stars : {hotel.stars}</P>
-                    </div>
-                    <div>
-                        <P>Prix : {hotel.price}</P>
-                    </div>
-                </> :
-                <>
-                    <div>
-                        <P>Stars : {hotel.stars}</P>
-                    </div>
-                    <div>
-                        <P>Prix : {hotel.price}</P>
-                    </div>
+                                            </>)
+                                    }
+                                })}
+                            </div>
+                            <div>
+                                <P> Stars : <ReactStars
+                                    count={5}
+                                    size={24}
+                                    value={hotel.stars}
+                                    edit={true}
+                                    activeColor="#ffd700"
+                                /></P>
+                            </div>
+                            <div>
+                                <P>Prix : {hotel.price}</P>
+                            </div>
+                        </> :
+                        <>
+                            <div>
+                                <P> Stars : <ReactStars
+                                    count={5}
+                                    size={24}
+                                    value={hotel.stars}
+                                    edit={true}
+                                    activeColor="#ffd700"
+                                /></P>
+                            </div>
+                            <div>
+                                <P>Prix : {hotel.price}</P>
+                            </div>
+                        </>}
+                    <HotelMap hotels={[hotel]} center={hotel.location} />
                 </>}
-            <HotelMap hotels={[hotel]} center={hotel.location} />
-            </>}
         </div>
-        
+
     );
 };
 
