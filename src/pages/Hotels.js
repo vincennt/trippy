@@ -3,11 +3,7 @@ import HotelCard from '../components/HotelCard';
 import Nav from '../components/Nav';
 import styled from 'styled-components';
 
-const Divee =styled.div`
 
-
-
-`
 
 const Flex = styled.div`
 display : flex;
@@ -65,7 +61,7 @@ const Hotels = (props) => {
     //  const { city } = useParams()
     // console.log(`"from hotel:"${city}`);
     return (
-        <Divee>
+        <div>
         <Flex>
             <Div>
                 <Nav />
@@ -78,7 +74,7 @@ const Hotels = (props) => {
          <Button onClick={() => handleClick(3)}>3</Button>
          <Button onClick={() => handleClick(4)}>4</Button>
         </BouttonContainer>
-     </Divee>
+     </div>
     )
 }
 

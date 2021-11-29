@@ -64,7 +64,7 @@ const HotelScroll = props => {
     return (
 
         <Hotel key={props.hotel.name} ref={ref} color={props.hotel._id === props.selectHotel._id}
-            onMouseEnter={() => {
+            onClick={() => {
                 props.setSelectHotel(props.hotel)
             }}
             onMouseLeave={() => {
