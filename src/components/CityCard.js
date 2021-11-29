@@ -5,21 +5,29 @@ import styled from 'styled-components'
 import { Link} from 'react-router-dom';
 
 
+const Para = styled.p`
+font-size : 24px ; 
+font-weight : 700 ; 
+margin: 0;
+`
+
 const City = styled.div`
     display : flex ;
     flex-direction: column ;
     width: 320px ;
-    border : solid red ;
-    border-radius:  5px ;
-    text-decoration : none  
-    
+    margin-bottom : 40px;    
+`
+const Image = styled.img`
+    background-image: url("src");
+    width: 100%;
+    height : 250px;
+    border-radius:  5px 5px ;   
 `
 const CityContainer = styled.div`
     display : flex ;
     flex-direction: column ;
     align-items: center;
-     gap: 20px ;
-
+     gap: 10px ;
 `
 
 
@@ -53,13 +61,19 @@ const CityCard = () => {
   }
     return (
         <CityContainer>
-            {citys.cities.map((city,i)=> 
-            <Link key={city.name} to={`/hotels/${city.slug}`} >
-            <City >
-                <img src={`https://trippy-konexio.herokuapp.com/${city.source}`} alt={city.slug}/>                
-                <p>{city.name}</p>
-            </City>
+            
+            {citys.cities.map((city,i)=> (<>
+            
+            <City>
+                <Link key={city.name} to={`/hotels/${city.slug}`} >
+                <Image src={`https://trippy-konexio.herokuapp.com/${city.source}`} alt={city.slug}/>                
             </Link>
+                <Para>{city.name}</Para>
+            </City>
+        
+            
+            </>)
+            
             )}
         </CityContainer>
     );

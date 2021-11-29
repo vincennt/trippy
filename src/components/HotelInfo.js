@@ -3,12 +3,12 @@ import { useParams } from 'react-router';
 import { useState, useEffect } from 'react';
 import styled from 'styled-components'
 import HotelMap from './HotelMap';
+import ReactStars from 'react-rating-stars-component';
 
 
-import { FaWifi, FaGlassMartiniAlt, FaSmokingBan, FaConciergeBell, FaLanguage, FaGlassCheers, FaSuitcaseRolling, FaHotTub } from 'react-icons/fa';
+import { FaParking, FaWifi, FaGlassMartiniAlt, FaSmokingBan, FaConciergeBell, FaLanguage, FaGlassCheers, FaSuitcaseRolling, FaHotTub } from 'react-icons/fa';
 import { MdRestaurantMenu, MdPets, MdOutlineAccessible, MdDryCleaning, MdFreeBreakfast, MdMeetingRoom, MdOutlineAir, MdPool, MdFamilyRestroom } from 'react-icons/md';
 import { GiGymBag } from 'react-icons/gi';
-
 
 
 const Button = styled.button`
@@ -20,12 +20,15 @@ const Button = styled.button`
     font-size: 16px;
     border-radius: 15px;
     margin: 8px;
+    cursor: pointer;
 `
 const H1 = styled.h1`  
     margin: 6px;
 `
 const P = styled.p`  
     margin: 6px;
+    padding: 3px;
+    
 `
 
 const HotelInfo = () => {
@@ -95,20 +98,20 @@ const HotelInfo = () => {
             commodity: "gym"
         },
         {
-            icon: <GiGymBag />,
-            commodity: "gym"
-        },
-        {
             icon: <MdPool />,
             commodity: "swimming pool"
         },
         {
             icon: <FaHotTub />,
-            commodity: "swimming pool"
+            commodity: "spa"
         },
         {
             icon: <MdMeetingRoom />,
-            commodity: "suits"
+            commodity: "meeting rooms"
+        },
+        {
+            icon: <FaParking />,
+            commodity: "parking"
         }
     ]
 
@@ -154,34 +157,43 @@ const HotelInfo = () => {
                             if (commodity === undefined) {
                                 return <p>{element}</p>
                             } else {
-                                return <P>
-                                    {commodity.icon}
-                                    {element}
-                                </P>
+                                return (
+                                    <>
+                                        <P>{commodity.icon} {element}</P>
+
+                                    </>)
                             }
-                            // console.log("- hotel.commodities element ===========> ", element);
                         })}
                     </div>
                     <div>
-                        <p>Stars : {hotel.stars}</p>
+                        <P>Stars : <ReactStars
+                                    count={5}
+                                    size={24}
+                                    value={hotel.stars}
+                                    edit={true}
+                                    activeColor="#ffd700"
+                                /></P>
                     </div>
                     <div>
-                        <p>prix : {hotel.price}</p>
+                        <P>prix : {hotel.price}</P>
                     </div>
                 </> :
                 <>
                     <div>
-                        <P>Stars : {hotel.stars}</P>
+                        <P>Stars :  <ReactStars
+                                    count={5}
+                                    size={24}
+                                    value={hotel.stars}
+                                    edit={true}
+                                    activeColor="#ffd700"
+                                /></P>
                     </div>
                     <div>
                         <P>prix : {hotel.price}</P>
                     </div>
                 </>}
-
             <HotelMap hotels={[hotel]} center={hotel.location} />
-
         </div>
-
     );
 };
 
