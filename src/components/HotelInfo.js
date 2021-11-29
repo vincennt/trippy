@@ -9,6 +9,10 @@ import { FaParking, FaWifi, FaGlassMartiniAlt, FaSmokingBan, FaConciergeBell, Fa
 import { MdRestaurantMenu, MdPets, MdOutlineAccessible, MdDryCleaning, MdFreeBreakfast, MdMeetingRoom, MdOutlineAir, MdPool, MdFamilyRestroom } from 'react-icons/md';
 import { GiGymBag } from 'react-icons/gi';
 
+const Div = styled.div`
+display: grid;
+grid-template-columns: 1fr 1fr 1fr;
+`
 
 const Button = styled.button`
     background-color: #69B1AE;
@@ -130,7 +134,7 @@ const HotelInfo = () => {
         fetch(`https://trippy-konexio.herokuapp.com/api/hotels/${id}/rooms`)
             .then(response => response.json())
             .then(data => setRoom(data.results))
-      
+
     }, [])
 
 
@@ -157,95 +161,97 @@ const HotelInfo = () => {
     }
     console.log(buttonRoom)
     console.log(room)
-    
+
     return (
         <div>
             <div>
                 <H3>{hotel.name}</H3>
             </div>
             <Button onClick={handleRoom}>Liste des chambres</Button>
-            { buttonRoom ?
-            <>
-            {room.map (room =>  {
-                return ( <Room room={room}/> )         
-            })}
-            <Button onClick={handleButton}>Options</Button>
-            {button ?
+            {buttonRoom ?
                 <>
-                    <div>{hotel.commodities.filter(function (ele, pos) {
-                        return hotel.commodities.indexOf(ele) === pos;
-                    })
-                        .map(element => {
-                            let commodity = array.find(e => e.commodity === element)
+                    {room.map(room => {
+                        // <Div>
+                            return (<Room room={room} /> )
+                        {/* </Div> */}
+                    })}
+                    <Button onClick={handleButton}>Options</Button>
+                    {button ?
+                        <>
+                            <div>{hotel.commodities.filter(function (ele, pos) {
+                                return hotel.commodities.indexOf(ele) === pos;
+                            })
+                                .map(element => {
+                                    let commodity = array.find(e => e.commodity === element)
 
-                            if (commodity === undefined) {
-                                return <P>{element}</P>
-                            } else {
-                                return (
-                                    <>
-                                        <P>{commodity.icon} {element}</P>
+                                    if (commodity === undefined) {
+                                        return <P>{element}</P>
+                                    } else {
+                                        return (
+                                            <>
+                                                <P>{commodity.icon} {element}</P>
 
-                                    </>)
-                            }
-                        })}
-                    </div>
-                    <div>
-                        <P>Stars : {hotel.stars}</P>
-                    </div>
-                    <div>
-                        <P>Prix : {hotel.price}</P>
-                    </div>
+                                            </>)
+                                    }
+                                })}
+                            </div>
+                            <div>
+                                <P>Stars : {hotel.stars}</P>
+                            </div>
+                            <div>
+                                <P>Prix : {hotel.price}</P>
+                            </div>
+                        </> :
+                        <>
+                            <div>
+                                <p>Stars : {hotel.stars}</p>
+                            </div>
+                            <div>
+                                <P>Prix : {hotel.price}</P>
+                            </div>
+                        </>}
+                    <HotelMap hotels={[hotel]} center={hotel.location} />
                 </> :
                 <>
-                    <div>
-                        <p>Stars : {hotel.stars}</p>
-                    </div>
-                    <div>
-                        <P>Prix : {hotel.price}</P>
-                    </div>
-                </>}
-            <HotelMap hotels={[hotel]} center={hotel.location} />
-            </> :
-            <>
-            <Button onClick={handleButton}>Options</Button>
-            {button ?
-                <>
-                    <div>{hotel.commodities.filter(function (ele, pos) {
-                        return hotel.commodities.indexOf(ele) == pos;
-                    })
-                        .map(element => {
-                            let commodity = array.find(e => e.commodity === element)
+                    <Button onClick={handleButton}>Options</Button>
+                    {button ?
+                        <>
+                            <div>{hotel.commodities.filter(function (ele, pos) {
+                                return hotel.commodities.indexOf(ele) == pos;
+                            })
+                                .map(element => {
+                                    let commodity = array.find(e => e.commodity === element)
 
-                            if (commodity === undefined) {
-                                return <P>{element}</P>
-                            } else {
-                                return (
-                                    <>
-                                        <P>{commodity.icon} {element}</P>
+                                    if (commodity === undefined) {
+                                        return <P>{element}</P>
+                                    } else {
+                                        return (
+                                            <>
+                                                <P>{commodity.icon} {element}</P>
 
-                                    </>)
-                            }
-                        })}
-                    </div>
-                    <div>
-                        <P>Stars : {hotel.stars}</P>
-                    </div>
-                    <div>
-                        <P>Prix : {hotel.price}</P>
-                    </div>
-                </> :
-                <>
-                    <div>
-                        <P>Stars : {hotel.stars}</P>
-                    </div>
-                    <div>
-                        <P>Prix : {hotel.price}</P>
-                    </div>
+                                            </>)
+                                    }
+                                })}
+                            </div>
+                            <div>
+                                <P>Stars : {hotel.stars}</P>
+                            </div>
+                            <div>
+                                <P>Prix : {hotel.price}</P>
+                            </div>
+                        </> :
+                        <>
+                            <div>
+                                <P>Stars : {hotel.stars}</P>
+                            </div>
+                            <div>
+                                <P>Prix : {hotel.price}</P>
+                            </div>
+                        </>}
+                    <HotelMap hotels={[hotel]} center={hotel.location} />
                 </>}
-            <HotelMap hotels={[hotel]} center={hotel.location} />
-            </>}
         </div>
-        
+
     );
 };
 

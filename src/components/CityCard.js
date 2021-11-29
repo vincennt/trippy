@@ -14,7 +14,7 @@ const Para = styled.p`
 `
 
 const City = styled.div`
-    display : flex ;
+    display: flex ;
     flex-direction: column ;
     width: 320px ;
     margin-bottom : 40px;
