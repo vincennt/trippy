@@ -14,8 +14,9 @@ import { GiGymBag } from 'react-icons/gi';
 
 
 const Contain =styled.div`
-width :600px;
-height : 700px
+width : 70%;
+height : auto;
+margin: 100px auto;
 `
 
 const Button = styled.button`
@@ -33,7 +34,7 @@ const H3 = styled.h3`
     @import url('https://fonts.googleapis.com/css2?family=PT+Sans&display=swap');
     font-family: 'PT Sans', sans-serif; 
     margin-left: 45px;
-    margin-bottom: 250px;
+    
 `
 const P = styled.p`  
     margin-left: 45px;

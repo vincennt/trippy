@@ -12,8 +12,8 @@ const Carousel = (props) => {
     // console.log(props)
     return (
         <CarouselProvider
-            naturalSlideWidth={15}
-            naturalSlideHeight={10}
+            naturalSlideWidth={240}
+            naturalSlideHeight={120}
             totalSlides={11}
             isPlaying
             interval={3000}
