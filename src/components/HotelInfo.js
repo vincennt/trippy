@@ -11,7 +11,13 @@ import { FaParking, FaWifi, FaGlassMartiniAlt, FaSmokingBan, FaConciergeBell, Fa
 import { MdRestaurantMenu, MdPets, MdOutlineAccessible, MdDryCleaning, MdFreeBreakfast, MdMeetingRoom, MdOutlineAir, MdPool, MdFamilyRestroom } from 'react-icons/md';
 import { GiGymBag } from 'react-icons/gi';
 
-const Contain =styled.div`
+const Div = styled.div`
+display: grid;
+margin: 30px;
+grid-template-columns: 1fr 1fr 1fr;
+`
+
+const Contain = styled.div`
 width : 70%;
 height : auto;
 margin: 50px auto;
@@ -63,11 +69,11 @@ const HotelInfo = () => {
             commodity: "conciergerie"
         },
         {
-            icon: < FaSmokingBan />,
+            icon: <FaSmokingBan />,
             commodity: "non smoking"
         },
         {
-            icon: < MdDryCleaning />,
+            icon: <MdDryCleaning />,
             commodity: "dry cleaning"
         },
         {
@@ -133,7 +139,6 @@ const HotelInfo = () => {
         fetch(`https://trippy-konexio.herokuapp.com/api/hotels/${id}`)
             .then(response => response.json())
             .then(data => setHotel(data.result))
-
     }, [])
 
     useEffect(() => {
@@ -175,16 +180,21 @@ const HotelInfo = () => {
             </div>
             <Contain>
                 <Carousel />
-            </Contain> 
+            </Contain>
             {/* <div>
             </div> */}
-            
+
             <Button onClick={handleRoom}>Liste des chambres</Button>
             {buttonRoom ?
                 <>
+                <Div>
                     {room.map(room => {
+
                         return (<Room room={room} />)
-                    })}
+                    }
+                    )}
+
+                </Div>
                     <Button onClick={handleButton}>Options</Button>
                     {button ?
                         <>
