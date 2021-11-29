@@ -11,11 +11,10 @@ import { FaParking, FaWifi, FaGlassMartiniAlt, FaSmokingBan, FaConciergeBell, Fa
 import { MdRestaurantMenu, MdPets, MdOutlineAccessible, MdDryCleaning, MdFreeBreakfast, MdMeetingRoom, MdOutlineAir, MdPool, MdFamilyRestroom } from 'react-icons/md';
 import { GiGymBag } from 'react-icons/gi';
 
-
 const Contain =styled.div`
 width : 70%;
 height : auto;
-margin: 100px auto;
+margin: 50px auto;
 `
 
 const Button = styled.button`
