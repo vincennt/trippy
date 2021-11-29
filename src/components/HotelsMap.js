@@ -1,14 +1,11 @@
 import GoogleMapReact from 'google-map-react';
 import styled from 'styled-components';
-import HotelMark from '../components/HotelMark';
+import HotelMarker from '../components/HotelMarker';
 
 const MapContainer = styled.div`
-  height: 60vh;
-  width: 100%;
-  margin-left: 20px;
-
-  @media (min-width : 725px){
-    margin-left: 40px;
+  height: 360px;
+  width: 100%;  
+  margin-top : 10px;
 `
 const HotelsMap = props => {
 
@@ -20,12 +17,11 @@ const HotelsMap = props => {
         <MapContainer>
             <GoogleMapReact
                 bootstrapURLKeys={{ key: "" }}
-                defaultCenter={{ lat: props.center.lat, lng: props.center.lon }}
-                defaultZoom={14}
+                defaultCenter={{ lat: props.hotels.center.lat, lng: props.hotels.center.lon }}
+                defaultZoom={12}
             >
-                
-                {props.hotels.map(hotel => (
-                    <HotelMark
+                {props.hotels.results.map(hotel => (
+                    <HotelMarker
                         lat={hotel.location.lat}
                         hotel={hotel}
                         lng={hotel.location.lon}
@@ -33,7 +29,6 @@ const HotelsMap = props => {
                         setSelectHotel={props.setSelectHotel}
                     />
                 ))}
-               
             </GoogleMapReact>
         </MapContainer>
     );

@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useRef } from 'react';
 
 
 const Box = styled.div`
@@ -7,33 +8,37 @@ const Box = styled.div`
 `
 
 const BoxPrice = styled.div`
-    height: 50px;
-    width: 50px;
+    height: 40px;
+    width:  50px;
     position: relative;
     border: solid green;
-    background-color: white;
+    border-radius: 7px;
+    background-color: ${props => (props.color ? "green" : "white")};
 `
 
 const Text = styled.p`
+    color: ${props => (props.color ? "white" : "black")};
     font-size: 20px;
     text-align: center;
+    margin-top: 10px;
 `
 
 const HotelMarker = props => {
+    const ref = useRef()
  
     return (
         <Box>
-            <BoxPrice 
-                // onMouseEnter={() => {
-                //     props.setSelectHotel(props.hotel)
-                // }}
-                // onMouseLeave={() => {
-                //     props.setSelectHotel({})
-                // }}
+            <BoxPrice ref={ref} color={props.hotel._id === props.selectHotel._id}
+                onMouseEnter={() => {
+                    props.setSelectHotel(props.hotel)
+                }}
+                onMouseLeave={() => {
+                    props.setSelectHotel({})
+                }}
                 lat={props.lat}
                 lng={props.lng}
             >
-                <Text>{props.hotel.price}€</Text>
+            <Text color={props.hotel._id === props.selectHotel._id} >{props.hotel.price}€</Text>
             </BoxPrice>
         </Box>
 
