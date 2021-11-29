@@ -2,7 +2,6 @@
 import { React } from 'react';
 import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext, Image } from 'pure-react-carousel';
 import 'pure-react-carousel/dist/react-carousel.es.css';
-import Img from './Img'
 
 
 const Carousel = (props) => {
@@ -13,8 +12,8 @@ const Carousel = (props) => {
     // console.log(props)
     return (
         <CarouselProvider
-            naturalSlideWidth={150}
-            naturalSlideHeight={100}
+            naturalSlideWidth={15}
+            naturalSlideHeight={10}
             totalSlides={11}
             isPlaying={true}
             interva={3000}
