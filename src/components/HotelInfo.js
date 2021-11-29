@@ -3,13 +3,20 @@ import { useParams } from 'react-router';
 import { useState, useEffect } from 'react';
 import styled from 'styled-components'
 import HotelMap from './HotelMap';
-import Room from '../components/Room';
-import ReactStars from "react-rating-stars-component";
+import Carousel from '../components/Carousel';
+import ReactStars from 'react-rating-stars-component';
 
+import Room from '../components/Room';
 import { FaParking, FaWifi, FaGlassMartiniAlt, FaSmokingBan, FaConciergeBell, FaLanguage, FaGlassCheers, FaSuitcaseRolling, FaHotTub } from 'react-icons/fa';
 import { MdRestaurantMenu, MdPets, MdOutlineAccessible, MdDryCleaning, MdFreeBreakfast, MdMeetingRoom, MdOutlineAir, MdPool, MdFamilyRestroom } from 'react-icons/md';
 import { GiGymBag } from 'react-icons/gi';
 
+
+const Contain =styled.div`
+width : 70%;
+height : auto;
+margin: 100px auto;
+`
 
 const Button = styled.button`
     background-color: #69B1AE;
@@ -167,6 +174,12 @@ const HotelInfo = () => {
             <div>
                 <H2>{hotel.name}</H2>
             </div>
+            <Contain>
+                <Carousel />
+            </Contain> 
+            {/* <div>
+            </div> */}
+            
             <Button onClick={handleRoom}>Liste des chambres</Button>
             {buttonRoom ?
                 <>
