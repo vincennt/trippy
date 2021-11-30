@@ -5,7 +5,9 @@ import styled from 'styled-components'
 import { Link} from 'react-router-dom';
 
 
-const Para = styled.p`
+
+
+const P = styled.p`
 font-size : 24px ; 
 font-weight : 700 ; 
 margin: 0;
@@ -66,19 +68,13 @@ const CityCard = () => {
   }
     return (
         <CityContainer>
-            
-            {citys.cities.map((city,i)=> (<>
-            
-            <City>
+            {citys.cities.map((city,i)=> 
+            <City >
                 <Link key={city.name} to={`/hotels/${city.slug}`} >
-                <Image src={`https://trippy-konexio.herokuapp.com/${city.source}`} alt={city.slug}/>                
-            </Link>
-                <Para>{city.name}</Para>
-            </City>
-        
-            
-            </>)
-            
+                <Image src={`https://trippy-konexio.herokuapp.com/${city.source}`} alt={city.slug}/>   
+                </Link>             
+                <P>{city.name}</P>
+            </City>            
             )}
         </CityContainer>
     );
