@@ -5,10 +5,10 @@ import HotelMark from '../components/HotelMark';
 const MapContainer = styled.div`
   height: 60vh;
   width: 95%;
-  margin-left: 20px;
+  margin: 20px;
 
   @media (min-width : 725px){
-    margin-left: 40px;
+    margin-left: 40px;}
 `
 const HotelsMap = props => {
 

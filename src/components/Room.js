@@ -17,7 +17,7 @@ const Div = styled.div`
     border-radius: 5px;
     text-align: center;
     width: 150px;    
-    margin: 10px;
+    margin: 10px 60px;
     grid-gap: 12px
 `
 

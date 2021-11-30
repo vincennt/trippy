@@ -32,6 +32,9 @@ const CityContainer = styled.div`
      gap: 10px ;
 `
 
+
+
+
 const CityCard = () => {
     // const { city } = useParams()
     // console.log(`from city cards ${city}`);
