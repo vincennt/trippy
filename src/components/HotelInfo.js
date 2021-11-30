@@ -12,17 +12,16 @@ import { MdRestaurantMenu, MdPets, MdOutlineAccessible, MdDryCleaning, MdFreeBre
 import { GiGymBag } from 'react-icons/gi';
 
 const Div = styled.div`
-display: grid;
-grid-template-columns: 1fr 1fr 1fr 1fr;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    margin : 10px 200px;
 `
 
 const Contain = styled.div`
-width : 70%;
-height : auto;
-margin: 30px auto;
+    width : 70%;
+    height : auto;
+    margin: 30px auto;
 `
-
-
 
 const Button = styled.button`
     background-color: #69B1AE;

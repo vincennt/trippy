@@ -1,77 +1,65 @@
-import { React, useState, useEffect } from 'react';
-import styled from 'styled-components'
-import { useParams } from 'react-router-dom';
-import HotelsMap from '../components/HotelsMap';
-import arrayImage from './Img';
-import Hotel from './Hotel'
+import { React, useState, useEffect } from "react";
+import styled from "styled-components";
+import { useParams } from "react-router-dom";
+import HotelsMap from "../components/HotelsMap";
+import arrayImage from "./Img";
+import Hotel from "./Hotel";
 
 const Map = styled.div`
-display :flex;
-flex-direction : column;
-width : 100%;
-@media (min-width : 1200px){
-display :flex;
-flex-direction : row;
-}
-`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  @media (min-width: 1250px) {
+    display: flex;
+    flex-direction: row;
+  }
+`;
 
 const HotelContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  gap: 20px;
+  margin-top: 40px;
 
-display: flex ; 
-flex-direction: column;
-align-items : center;
-justify-content : center ; 
-
-@media(min-width :680px){
+  @media (min-width: 680px) {
     display: grid;
-   justify-content: space-evenly ;
-    grid-template-columns: repeat(2,1fr);
+    gap: 20px;
+    justify-content: space-between;
+    grid-template-columns: repeat(2, 1fr);
     margin: 15px;
-    align-items: center;
-    gap: 20px ;
-}
+  }
+`;
 
-@media(min-width : 1050px){
-   display: grid;
-   justify-content: space-evenly ;
-    grid-template-columns: repeat(3,1fr);
-    margin: 15px;
-    align-items: center;
-    gap: 20px ;
-}
-`
+const HotelCard = (props) => {
+  const [hotels, setHotels] = useState(null);
+  const { city } = useParams();
+  const [selectHotel, setSelectHotel] = useState({});
+  // console.log(`form hotelcards : ${city}`);
 
-
-
-
-const HotelCard = props => {
-
-    const [hotels, setHotels] = useState(null)
-    const { city } = useParams()
-    const [selectHotel, setSelectHotel] = useState({})
-    // console.log(`form hotelcards : ${city}`);
-
-    const handleAddStorage = (id) => {
-        const favorites = localStorage.getItem("ID")
-        if (!favorites) {
-            localStorage.setItem("ID", JSON.stringify([id]))
-        }
-        else {
-            let array = JSON.parse(favorites)
-            array = [...array, id]
-            console.log(array);
-            localStorage.setItem("ID", JSON.stringify(array))
-
-        }
-
+  const handleAddStorage = (id) => {
+    const favorites = localStorage.getItem("ID");
+    if (!favorites) {
+      localStorage.setItem("ID", JSON.stringify([id]));
+    } else {
+      let array = JSON.parse(favorites);
+      array = [...array, id];
+      console.log(array);
+      localStorage.setItem("ID", JSON.stringify(array));
     }
+  };
 
-    useEffect(() => {
-        fetch(`https://trippy-konexio.herokuapp.com/api/hotels/city/${city}?page=${props.pageNumber}`)
-            .then(response => response.json())
-            .then(data => setHotels(data))
-    }, [city, props.pageNumber])
+  useEffect(() => {
+    fetch(
+      `https://trippy-konexio.herokuapp.com/api/hotels/city/${city}?page=${props.pageNumber}`
+    )
+      .then((response) => response.json())
+      .then((data) => setHotels(data));
+  }, [city, props.pageNumber]);
 
+  if (!hotels) {
+    return <p>Loading Data , please wait </p>;
+  }
 
     if (!hotels) {
         return (
@@ -97,7 +85,6 @@ const HotelCard = props => {
         </Map>
     );
 
-};
+            }
 
 export default HotelCard;
-
