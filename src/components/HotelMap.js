@@ -3,9 +3,9 @@ import styled from 'styled-components';
 import HotelMark from '../components/HotelMark';
 
 const MapContainer = styled.div`
-  height: 100vh;
-  width: 100%;
-  margin-left: 20px;
+  height: 50vh;
+  width: 95%;
+  margin: 20px;
 
   @media (min-width : 725px){
     margin-left: 40px;

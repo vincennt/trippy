@@ -15,12 +15,14 @@ import { GiGymBag } from 'react-icons/gi';
 const Div = styled.div`
 display: grid;
 grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+margin : 10px 200px;
+
 `
 
 const Contain = styled.div`
 width : 70%;
 height : auto;
-margin: 100px auto;
+margin: 50px auto;
 `
 
 const Button = styled.button`

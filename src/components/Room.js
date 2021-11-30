@@ -15,8 +15,9 @@ const Div = styled.div`
     border: 2px solid #69B1AE;
     border-radius: 10px;
     width: 150px;    
-    margin: 50px;
+    margin: 10px ;
     grid-gap: 12px;
+    text-align: center;
 `
 
 const Room = props => {
