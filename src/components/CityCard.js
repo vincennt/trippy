@@ -16,24 +16,39 @@ margin: 0;
 const City = styled.div`
     display : flex ;
     flex-direction: column ;
-    width: 320px;
-    margin-bottom : 40px;
-    
-    
+    width: 550px ;
+    margin-bottom : 40px; 
+    justify-self: center;
+    @media(max-width : 1130px){
+        width:450px
+    }
+    @media(max-width : 940px){
+        width:350px
+    }
 `
+
 const Image = styled.img`
-    background-image: url("src");
-    width: 100%;
-    height : 250px;
-    border-radius:  5px 5px ;
-    
-    
+    width:100%;
+    height : 350px;
+    border-radius:  5px 5px ;   
+     @media(max-width : 940px){
+        height : 250px;
+    }
+    @media(max-width : 750px){
+        height : 250px;
+    }
 `
+
 const CityContainer = styled.div`
-    display : flex ;
-    flex-direction: column ;
-    align-items: center;
-    gap: 10px ;
+    display:flex;
+    flex-direction  : column;
+    align-items : center;
+    margin-top : 60px;
+    @media(min-width: 740px){
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    
+}
 
 `
 
@@ -68,9 +83,9 @@ const CityCard = () => {
   }
     return (
         <CityContainer>
-            {citys.cities.map((city,i)=> 
-            <City >
-                <Link key={city.name} to={`/hotels/${city.slug}`} >
+            {citys.cities.map((city,i) => 
+            <City>
+                <Link key={city.name} to={`/hotels/${city.slug}`}>
                 <Image src={`https://trippy-konexio.herokuapp.com/${city.source}`} alt={city.slug}/>   
                 </Link>             
                 <P>{city.name}</P>
