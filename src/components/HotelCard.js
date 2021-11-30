@@ -9,7 +9,7 @@ const Map = styled.div`
 display :flex;
 flex-direction : column;
 width : 100%;
-@media (min-width : 1200px){
+@media (min-width : 1250px){
 display :flex;
 flex-direction : row;
 }
@@ -19,25 +19,18 @@ const HotelContainer = styled.div`
 
 display: flex ; 
 flex-direction: column;
-align-items : center;
-justify-content : center ; 
+align-self: center;
+gap: 20px ;
+margin-top: 40px;
 
 @media(min-width :680px){
     display: grid;
-   justify-content: space-evenly ;
+    justify-content : space-between;
     grid-template-columns: repeat(2,1fr);
-    margin: 15px;
-    align-items: center;
-    gap: 20px ;
-}
+    
 
-@media(min-width : 1050px){
-   display: grid;
-   justify-content: space-evenly ;
-    grid-template-columns: repeat(3,1fr);
-    margin: 15px;
-    align-items: center;
-    gap: 20px ;
+
+    
 }
 `
 
