@@ -6,43 +6,40 @@ import arrayImage from './Img';
 import Hotel from './Hotel'
 
 const Map = styled.div`
-display :flex;
-flex-direction : column;
-width : 100%;
-@media (min-width : 1200px){
-display :flex;
-flex-direction : row;
-}
+    display :flex;
+    flex-direction : column;
+    width : 100%;
+    @media (min-width : 1200px){
+        display :flex;
+        flex-direction : row;
+    }
 `
 
 const HotelContainer = styled.div`
 
-display: flex ; 
-flex-direction: column;
-align-items : center;
-justify-content : center ; 
+    display: flex ; 
+    flex-direction: column;
+    align-items : center;
+    justify-content : center ; 
 
-@media(min-width :680px){
-    display: grid;
-   justify-content: space-evenly ;
-    grid-template-columns: repeat(2,1fr);
-    margin: 15px;
-    align-items: center;
-    gap: 20px ;
-}
+    @media(min-width :680px){
+        display: grid;
+        justify-content: space-evenly ;
+        grid-template-columns: repeat(2,1fr);
+        margin: 15px;
+        align-items: center;
+        gap: 20px ;
+    }
 
-@media(min-width : 1050px){
-   display: grid;
-   justify-content: space-evenly ;
-    grid-template-columns: repeat(3,1fr);
-    margin: 15px;
-    align-items: center;
-    gap: 20px ;
-}
+    @media(min-width : 1050px){
+        display: grid;
+        justify-content: space-evenly ;
+        grid-template-columns: repeat(3,1fr);
+        margin: 15px;
+        align-items: center;
+        gap: 20px ;
+    }
 `
-
-
-
 
 const HotelCard = props => {
 
@@ -61,9 +58,7 @@ const HotelCard = props => {
             array = [...array, id]
             console.log(array);
             localStorage.setItem("ID", JSON.stringify(array))
-
         }
-
     }
 
     useEffect(() => {
@@ -93,7 +88,7 @@ const HotelCard = props => {
                         <Hotel hotel={hotel} selectHotel={selectHotel} setSelectHotel={setSelectHotel} src={src} handleAddStorage={handleAddStorage} />)
                 })}
             </HotelContainer>
-            <HotelsMap hotels={hotels}  selectHotel={selectHotel} setSelectHotel={setSelectHotel} />
+            <HotelsMap hotels={hotels} selectHotel={selectHotel} setSelectHotel={setSelectHotel} />
         </Map>
     );
 
