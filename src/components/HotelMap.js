@@ -22,8 +22,7 @@ const HotelsMap = props => {
                 bootstrapURLKeys={{ key: "" }}
                 defaultCenter={{ lat: props.center.lat, lng: props.center.lon }}
                 defaultZoom={14}
-            >
-                
+            >                
                 {props.hotels.map(hotel => (
                     <HotelMark
                         lat={hotel.location.lat}

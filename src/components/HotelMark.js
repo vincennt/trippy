@@ -32,8 +32,7 @@ const Text = styled.p`
 const HotelMark = props => {
     return (
         <Box>
-            <BoxPrice
-               
+            <BoxPrice               
                 lat={props.lat}
                 lng={props.lng}
             >

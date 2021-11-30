@@ -17,24 +17,20 @@ const City = styled.div`
     display : flex ;
     flex-direction: column ;
     width: 320px ;
-    margin-bottom : 40px;
-    
-    
+    margin-bottom : 40px; 
 `
-const Image = styled.img`co
-    background-image: url("src");
-    width: 100%;
-    height : 250px;
-    border-radius:  5px 5px ;
-    
-    
-`
-const CityContainer = styled.div`
-    display : flex ;
-    flex-direction: column ;
-    align-items: center;
-     gap: 10px ;
 
+const Image = styled.img`
+    background-image: url("src");
+    height : 250px;
+    border-radius:  5px 5px ;   
+`
+
+const CityContainer = styled.div`
+    display : grid;
+    grid-template-columns: 150px 150px;
+    gap: 120px 540px;
+    justify-content: center;
 `
 
 
@@ -68,9 +64,9 @@ const CityCard = () => {
   }
     return (
         <CityContainer>
-            {citys.cities.map((city,i)=> 
-            <City >
-                <Link key={city.name} to={`/hotels/${city.slug}`} >
+            {citys.cities.map((city,i) => 
+            <City>
+                <Link key={city.name} to={`/hotels/${city.slug}`}>
                 <Image src={`https://trippy-konexio.herokuapp.com/${city.source}`} alt={city.slug}/>   
                 </Link>             
                 <P>{city.name}</P>
