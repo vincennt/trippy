@@ -21,7 +21,7 @@ const City = styled.div`
     
     
 `
-const Image = styled.img`co
+const Image = styled.img`
     background-image: url("src");
     width: 100%;
     height : 250px;
