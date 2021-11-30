@@ -94,7 +94,7 @@ const [hotel , setHotel] = useState([])
         const favoritesIds = JSON.parse(localStorage.getItem("ID"))
         const promiseArray = favoritesIds.map(id => {
         return fetch(`https://trippy-konexio.herokuapp.com/api/hotels/${id}`)
-    })  
+    },)  
 
     Promise.all(promiseArray)
       .then(responses => Promise.all(responses.map(response => response.json())))
