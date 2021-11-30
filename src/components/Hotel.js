@@ -9,7 +9,6 @@ const Hotel = styled.div`
     justify-content : center;
     width: 300px ;
     background-image: url("src");
-    // background: linear-gradient(to bottom, #fff 50%, #e0e0e0 100%);
     border-radius: 10px;
     font-weight: bold;
     margin: 0 1em;

@@ -86,34 +86,13 @@ export default function Fav() {
     }
 
 
-<<<<<<< HEAD
-//api container
-const [hotels , setHotel] = useState([])
-=======
     //api container
     const [hotel, setHotel] = useState([])
->>>>>>> 151ef6d60d0a9ba59d5bc604ed2683477165951d
 
 
     useEffect(() => {
         const favoritesIds = JSON.parse(localStorage.getItem("ID"))
         const promiseArray = favoritesIds.map(id => {
-<<<<<<< HEAD
-        return fetch(`https://trippy-konexio.herokuapp.com/api/hotels/${id}`)
-    },)  
-
-    Promise.all(promiseArray)
-      .then(responses => Promise.all(responses.map(response => response.json())))
-      .then(response => {
-        const formattedHotels = response.map(r => r.result)
-        setHotel(formattedHotels)
-      })
-  }, [])
-
-  if(hotels.length === 0){
-      return (<p>Loading</p>)
-  }
-=======
             return fetch(`https://trippy-konexio.herokuapp.com/api/hotels/${id}`)
         })
 
@@ -128,11 +107,10 @@ const [hotels , setHotel] = useState([])
     if (hotel.length === 0) {
         return (<p>Loading</p>)
     }
->>>>>>> 151ef6d60d0a9ba59d5bc604ed2683477165951d
     return (
         <div>
             <HotelContainer>
-                {hotels.map(hotel => {
+                {hotel.map(hotel => {
                     var src = hotel.pictures.find(picture => arrayImage.includes(picture))
                     if (src) {
                         src = 'https://trippy-konexio.herokuapp.com' + src
@@ -143,17 +121,10 @@ const [hotels , setHotel] = useState([])
                     return (
 
                         <Hotel key={hotel.name}>
-<<<<<<< HEAD
                          <Link key={hotel._id} to={`/hotels/${hotel.country}/${hotel._id}`}>                                                        
                             <Image
                             src={src} 
                             alt={hotel.name} />
-=======
-                            <Link key={hotel._id} to={`/hotels/${hotel._id}`}>
-                                <Image
-                                    src={src}
-                                    alt={hotel.name} />
->>>>>>> 151ef6d60d0a9ba59d5bc604ed2683477165951d
                             </Link>
                             <Dive>
                                 <P>{hotel.name}</P>
