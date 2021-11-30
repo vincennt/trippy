@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import HotelMarker from '../components/HotelMarker';
 
 const MapContainer = styled.div`
-  height: 360px;
+  height: 85vh;
   width: 100%;  
   margin-top : 10px;
 `
