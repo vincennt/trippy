@@ -61,30 +61,39 @@ const HotelCard = (props) => {
     return <p>Loading Data , please wait </p>;
   }
 
-    if (!hotels) {
-        return (
-            <p>Loading Data , please wait </p>
-        )
-    }
+  return (
+    <Map>
+      <HotelContainer>
+        {hotels.results.map((hotel, index) => {
+          var src = hotel.pictures.find((picture) =>
+            arrayImage.includes(picture)
+          );
+          if (src) {
+            src = "https://trippy-konexio.herokuapp.com" + src;
+          } else {
+            src =
+              "https://media.istockphoto.com/photos/downtown-cleveland-hotel-entrance-and-waiting-taxi-cab-picture-id472899538?b=1&k=20&m=472899538&s=170667a&w=0&h=oGDM26vWKgcKA3ARp2da-H4St2dMEhJg23TTBeJgPDE=";
+          }
 
-    return (
-        <Map>
-            <HotelContainer>
-                {hotels.results.map(hotel => {
-                    var src = hotel.pictures.find(picture => arrayImage.includes(picture))
-                    if (src) {
-                        src = 'https://trippy-konexio.herokuapp.com' + src
-                    }
-                    else { src = 'https://media.istockphoto.com/photos/downtown-cleveland-hotel-entrance-and-waiting-taxi-cab-picture-id472899538?b=1&k=20&m=472899538&s=170667a&w=0&h=oGDM26vWKgcKA3ARp2da-H4St2dMEhJg23TTBeJgPDE=' }
-
-                    return (
-                        <Hotel key={hotel.name} hotel={hotel} selectHotel={selectHotel} setSelectHotel={setSelectHotel} src={src} handleAddStorage={handleAddStorage} />)
-                })}
-            </HotelContainer>
-            <HotelsMap hotels={hotels}  selectHotel={selectHotel} setSelectHotel={setSelectHotel} />
-        </Map>
-    );
-
-            }
+          return (
+            <Hotel
+              key={index}
+              hotel={hotel}
+              selectHotel={selectHotel}
+              setSelectHotel={setSelectHotel}
+              src={src}
+              handleAddStorage={handleAddStorage}
+            />
+          );
+        })}
+      </HotelContainer>
+      <HotelsMap
+        hotels={hotels}
+        selectHotel={selectHotel}
+        setSelectHotel={setSelectHotel}
+      />
+    </Map>
+  );
+};
 
 export default HotelCard;
