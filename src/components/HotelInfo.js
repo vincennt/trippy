@@ -5,29 +5,29 @@ import styled from 'styled-components'
 import HotelMap from './HotelMap';
 import Carousel from '../components/Carousel';
 import ReactStars from 'react-rating-stars-component';
-
 import Room from '../components/Room';
+
 import { FaParking, FaWifi, FaGlassMartiniAlt, FaSmokingBan, FaConciergeBell, FaLanguage, FaGlassCheers, FaSuitcaseRolling, FaHotTub } from 'react-icons/fa';
 import { MdRestaurantMenu, MdPets, MdOutlineAccessible, MdDryCleaning, MdFreeBreakfast, MdMeetingRoom, MdOutlineAir, MdPool, MdFamilyRestroom } from 'react-icons/md';
 import { GiGymBag } from 'react-icons/gi';
 
 const Div = styled.div`
-display: grid;
-margin: 30px;
-grid-template-columns: 1fr 1fr 1fr;
+    display: grid;
+    margin: 30px;
+    grid-template-columns: repeat(5, 1fr);
 `
 
 const Contain = styled.div`
-width : 70%;
-height : auto;
-margin: 50px auto;
+    width : 70%;
+    height : auto;
+    margin: 50px auto;
 `
 
 const Button = styled.button`
     background-color: #69B1AE;
     border: none;
     color: white;
-    padding: 10px 12px;
+    padding: 7px 12px;
     text-align: center;
     font-size: 16px;
     border-radius: 15px;
@@ -38,8 +38,7 @@ const H2 = styled.h3`
     @import url('https://fonts.googleapis.com/css2?family=PT+Sans&display=swap');
     font-family: 'PT Sans', sans-serif; 
     margin-left: 45px;
-    font-weight:lighter;
-    
+    font-weight:lighter;    
 `
 const P = styled.p`  
     margin-left: 45px;
@@ -181,20 +180,16 @@ const HotelInfo = () => {
             <Contain>
                 <Carousel />
             </Contain>
-            {/* <div>
-            </div> */}
-
             <Button onClick={handleRoom}>Liste des chambres</Button>
             {buttonRoom ?
                 <>
-                <Div>
-                    {room.map(room => {
+                    <Div>
+                        {room.map(room => {
 
-                        return (<Room room={room} />)
-                    }
-                    )}
-
-                </Div>
+                            return (<Room room={room} />)
+                        }
+                        )}
+                    </Div>
                     <Button onClick={handleButton}>Options</Button>
                     {button ?
                         <>
@@ -295,7 +290,6 @@ const HotelInfo = () => {
                     <HotelMap hotels={[hotel]} center={hotel.location} />
                 </>}
         </div>
-
     );
 };
 

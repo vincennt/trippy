@@ -10,13 +10,9 @@ align-items : center
 `
 const BouttonContainer = styled.div`
 display : flex ; 
-<<<<<<< HEAD
-gap : 4px;
-=======
 margin: 10px;
 margin-left: 35px;
-gap 4px;
->>>>>>> 004f1ba35905119994c189090e2d722c628955fa
+gap : 4px;
 `
 const Div = styled.div
     `width: 100%;`
@@ -63,19 +59,19 @@ const Hotels = (props) => {
     // console.log(`"from hotel:"${city}`);
     return (
         <>
-        <Flex>
-            <Div>
-                <Nav />
-                <HotelCard pageNumber={page} />
-            </Div>
-        </Flex>
-         <BouttonContainer>
-         <Button onClick={() => handleClick(1)}>1</Button>
-         <Button onClick={() => handleClick(2)}>2</Button>
-         <Button onClick={() => handleClick(3)}>3</Button>
-         <Button onClick={() => handleClick(4)}>4</Button>
-     </BouttonContainer>
-     </>
+            <Flex>
+                <Div>
+                    <Nav />
+                    <HotelCard pageNumber={page} />
+                </Div>
+            </Flex>
+            <BouttonContainer>
+                <Button onClick={() => handleClick(1)}>1</Button>
+                <Button onClick={() => handleClick(2)}>2</Button>
+                <Button onClick={() => handleClick(3)}>3</Button>
+                <Button onClick={() => handleClick(4)}>4</Button>
+            </BouttonContainer>
+        </>
     )
 }
 

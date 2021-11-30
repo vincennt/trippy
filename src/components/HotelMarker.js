@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import { useRef } from 'react';
 
-
 const Box = styled.div`
     position: relative;
 `
@@ -25,7 +24,7 @@ const Text = styled.p`
 
 const HotelMarker = props => {
     const ref = useRef()
- 
+
     return (
         <Box>
             <BoxPrice ref={ref} color={props.hotel._id === props.selectHotel._id}
@@ -38,7 +37,7 @@ const HotelMarker = props => {
                 lat={props.lat}
                 lng={props.lng}
             >
-            <Text color={props.hotel._id === props.selectHotel._id} >{props.hotel.price}€</Text>
+                <Text color={props.hotel._id === props.selectHotel._id} >{props.hotel.price}€</Text>
             </BoxPrice>
         </Box>
 

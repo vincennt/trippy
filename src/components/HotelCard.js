@@ -6,18 +6,17 @@ import arrayImage from './Img';
 import Hotel from './Hotel'
 
 const Map = styled.div`
-display :flex;
-flex-direction : row
+    display :flex;
+    flex-direction : row
 `
 
 const HotelContainer = styled.div`
+    display:flex ; 
+    flex-direction: column;
+    align-items : center;
+    justify-content : center ; 
 
-display:flex ; 
-flex-direction: column;
-align-items : center;
-justify-content : center ; 
-
-@media (min-width : 725px){
+    @media (min-width : 725px){
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     margin: 15px;
@@ -46,7 +45,6 @@ const HotelCard = props => {
             localStorage.setItem("ID", JSON.stringify(array))
 
         }
-
     }
 
     useEffect(() => {
@@ -64,7 +62,6 @@ const HotelCard = props => {
 
     return (
         <Map>
-            
             <HotelContainer>
                 {hotels.results.map(hotel => {
                     var src = hotel.pictures.find(picture => arrayImage.includes(picture))
@@ -77,10 +74,9 @@ const HotelCard = props => {
                         <Hotel hotel={hotel} selectHotel={selectHotel} setSelectHotel={setSelectHotel} src={src} handleAddStorage={handleAddStorage} />)
                 })}
             </HotelContainer>
-            <HotelsMap hotels={hotels}  selectHotel={selectHotel} setSelectHotel={setSelectHotel} />
+            <HotelsMap hotels={hotels} selectHotel={selectHotel} setSelectHotel={setSelectHotel} />
         </Map>
     );
-
 };
 
 export default HotelCard;

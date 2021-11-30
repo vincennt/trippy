@@ -14,7 +14,7 @@ const HotelsMap = props => {
     if (!props.hotels) {
         return <p>Chargement...</p>
     }
-    
+
     return (
         <MapContainer>
             <GoogleMapReact

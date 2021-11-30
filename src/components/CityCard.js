@@ -1,9 +1,7 @@
 import React from 'react';
-
 import { useEffect, useState } from 'react';
 import styled from 'styled-components'
 import { Link } from 'react-router-dom';
-
 
 const Para = styled.p`
     @import url('https://fonts.googleapis.com/css2?family=PT+Sans&display=swap');
@@ -31,10 +29,6 @@ const CityContainer = styled.div`
     align-items: center;
      gap: 10px ;
 `
-
-
-
-
 const CityCard = () => {
     // const { city } = useParams()
     // console.log(`from city cards ${city}`);
@@ -61,17 +55,16 @@ const CityCard = () => {
 
     return (
         <CityContainer>
-                {citys.cities.map((city,i)=> (<>
-                
+            {citys.cities.map((city, i) => (<>
                 <City>
                     <Link key={city.name} to={`/hotels/${city.slug}`} >
-                    <Image src={`https://trippy-konexio.herokuapp.com/${city.source}`} alt={city.slug}/>                
-                </Link>
+                        <Image src={`https://trippy-konexio.herokuapp.com/${city.source}`} alt={city.slug} />
+                    </Link>
                     <Para>{city.name}</Para>
                 </City>
-                </>)         
-                )}
-            </CityContainer>
+            </>)
+            )}
+        </CityContainer>
     );
 };
 

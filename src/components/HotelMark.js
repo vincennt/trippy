@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-
 const Box = styled.div`
     position: relative;
 `
@@ -33,12 +32,11 @@ const HotelMark = props => {
     return (
         <Box>
             <BoxPrice
-               
                 lat={props.lat}
                 lng={props.lng}
             >
-            <H1>{props.hotel.name} </H1>
-            <Text>{props.hotel.address}</Text>
+                <H1>{props.hotel.name} </H1>
+                <Text>{props.hotel.address}</Text>
             </BoxPrice>
         </Box>
 
