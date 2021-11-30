@@ -13,12 +13,12 @@ const DivContainer = styled.div`
 `
     
 const Div = styled.div`
-    border: 1px solid gray;
-    border-radius: 5px;
-    text-align: center;
+    border: 2px solid #69B1AE;
+    border-radius: 10px;
     width: 150px;    
-    margin: 10px 60px;
-    grid-gap: 12px
+    margin: 10px ;
+    grid-gap: 12px;
+    text-align: center;
 `
 
 const Room = props => {
@@ -26,7 +26,7 @@ const Room = props => {
     return (
         <DivContainer>
             <Div>
-                <P>Price : {props.room.price}</P>
+                <P>Price : {props.room.price}€</P>
                 <P>People: {props.room.people}</P>
                 {props.room.isBathroom ? <P>Bathroom: yes</P> : <P>Bathroom: no</P>}
             </Div>

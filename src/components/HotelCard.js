@@ -7,24 +7,45 @@ import Hotel from './Hotel'
 
 const Map = styled.div`
 display :flex;
-flex-direction : row
+flex-direction : column;
+width : 100%;
+@media (min-width : 1200px){
+display :flex;
+flex-direction : row;
+}
 `
 
 const HotelContainer = styled.div`
-
 display:flex ; 
 flex-direction: column;
 align-items : center;
 justify-content : center ; 
 
-@media (min-width : 725px){
+@media(min-width :680px){
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+   justify-content: space-evenly ;
+    grid-template-columns: repeat(2,1fr);
     margin: 15px;
-    flex-direction: column ;
     align-items: center;
-    gap: 20px ;}
+    gap: 20px ;
+}
+
+@media(min-width : 1050px){
+   display: grid;
+   justify-content: space-evenly ;
+    grid-template-columns: repeat(3,1fr);
+    margin: 15px;
+    align-items: center;
+    gap: 20px ;
+   
+}
+
+@media(min-width : 1200px){
+grid-template-columns: repeat(2,1fr);
+}
 `
+
+
 
 
 const HotelCard = props => {
@@ -64,7 +85,6 @@ const HotelCard = props => {
 
     return (
         <Map>
-            
             <HotelContainer>
                 {hotels.results.map(hotel => {
                     var src = hotel.pictures.find(picture => arrayImage.includes(picture))

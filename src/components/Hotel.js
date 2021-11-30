@@ -30,8 +30,9 @@ const P = styled.p`
     font-size : 13px;
     margin-left:2px,
 `
-const Dive = styled.div 
-`margin : 5px`
+const Dive = styled.div `
+    margin : 5px
+`
 
 const Button = styled.button`
     box-shadow: 0px 1px 0px 0px #fff6af;
@@ -65,7 +66,7 @@ const HotelScroll = props => {
     return (
 
         <Hotel key={props.hotel.name} ref={ref} color={props.hotel._id === props.selectHotel._id}
-            onMouseEnter={() => {
+            onClick={() => {
                 props.setSelectHotel(props.hotel)
             }}
             onMouseLeave={() => {
@@ -79,14 +80,13 @@ const HotelScroll = props => {
             <Dive>
                 <P>{props.hotel.name}</P>
                 <P>{props.hotel.price}€</P>
-                <ReactStars
+                <P>Stars :  <ReactStars
                                     count={5}
                                     size={24}
                                     value={props.hotel.stars}
                                     edit={true}
                                     activeColor="#ffd700"
-                                />
-              
+                                /></P>
             </Dive>
             
             <Button onClick={() => props.handleAddStorage(props.hotel._id)}>Add Fav</Button>

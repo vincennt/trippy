@@ -19,8 +19,6 @@ const Carousel = (props) => {
             interval={3000}
             infinite
         >
-            <ButtonBack>Back</ButtonBack>
-            <ButtonNext>Next</ButtonNext>
             <Slider>
                 <Slide index={0}>
                     <Image src="https://trippy-konexio.herokuapp.com/img/hotels/10066892_18.jpg" alt="zero foto" />
@@ -35,27 +33,29 @@ const Carousel = (props) => {
                     <Image src="https://trippy-konexio.herokuapp.com/img/hotels/10066892_25.jpg" alt="third foto" />
                 </Slide>
                 <Slide index={4}>
-                    <Image src="https://trippy-konexio.herokuapp.com/img/hotels/10319203_25.jpg" alt="four foto" />
+                    <Image src="https://trippy-konexio.herokuapp.com/img/hotels/10319203_25.jpg" alt="fourth foto" />
                 </Slide>
                 <Slide index={5}>
-                    <Image src="https://trippy-konexio.herokuapp.com/img/hotels/10319203_30.jpg" alt="five foto" />
+                    <Image src="https://trippy-konexio.herokuapp.com/img/hotels/10319203_30.jpg" alt="fifth foto" />
                 </Slide>
                 <Slide index={6}>
-                    <Image src="https://trippy-konexio.herokuapp.com/img/hotels/10541730_48.jpg" alt="six foto" />
+                    <Image src="https://trippy-konexio.herokuapp.com/img/hotels/10541730_48.jpg" alt="sixth foto" />
                 </Slide>
                 <Slide index={7}>
-                    <Image src="https://trippy-konexio.herokuapp.com/img/hotels/12533513_10.jpg" alt="seven foto" />
+                    <Image src="https://trippy-konexio.herokuapp.com/img/hotels/12533513_10.jpg" alt="seventh foto" />
                 </Slide>
                 <Slide index={8}>
-                    <Image src="https://trippy-konexio.herokuapp.com/img/hotels/11621939_32.jpg" alt="eight foto" />
+                    <Image src="https://trippy-konexio.herokuapp.com/img/hotels/11621939_32.jpg" alt="eighth foto" />
                 </Slide>
                 <Slide index={9}>
-                    <Image src="https://trippy-konexio.herokuapp.com/img/hotels/112064_45.jpg" alt="nine foto" />
+                    <Image src="https://trippy-konexio.herokuapp.com/img/hotels/112064_45.jpg" alt="ninth foto" />
                 </Slide>
                 <Slide index={10}>
-                    <Image src="https://trippy-konexio.herokuapp.com/img/hotels/11854022_21.jpg" alt="ten foto" />
+                    <Image src="https://trippy-konexio.herokuapp.com/img/hotels/11854022_21.jpg" alt="tenth foto" />
                 </Slide>
             </Slider>
+            <ButtonBack>Back</ButtonBack>
+            <ButtonNext>Next</ButtonNext>
         </CarouselProvider>
     );
 };
