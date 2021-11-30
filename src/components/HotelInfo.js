@@ -14,7 +14,7 @@ import { GiGymBag } from 'react-icons/gi';
 
 const Div = styled.div`
 display: grid;
-grid-template-columns: 1fr 1fr 1fr;
+grid-template-columns: 1fr 1fr 1fr 1fr;
 `
 
 const Contain = styled.div`
@@ -22,6 +22,8 @@ width : 70%;
 height : auto;
 margin: 100px auto;
 `
+
+
 
 const Button = styled.button`
     background-color: #69B1AE;

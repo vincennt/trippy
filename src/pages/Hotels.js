@@ -10,13 +10,9 @@ align-items : center
 `
 const BouttonContainer = styled.div`
 display : flex ; 
-<<<<<<< HEAD
-gap : 4px;
-=======
 margin: 10px;
 margin-left: 35px;
 gap 4px;
->>>>>>> 004f1ba35905119994c189090e2d722c628955fa
 `
 const Div = styled.div
     `width: 100%;`
