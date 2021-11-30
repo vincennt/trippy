@@ -15,7 +15,7 @@ display : flex ;
 justify-content: center;
 margin: 10px;
 margin-left: 35px;
-gap 4px;
+gap: 4px;
 `
 const Div = styled.div
     `width: 100%;`
@@ -62,19 +62,19 @@ const Hotels = (props) => {
     // console.log(`"from hotel:"${city}`);
     return (
         <div>
-        <Flex>
-            <Div>
-                <Nav />
-                <HotelCard pageNumber={page} />
-            </Div>
-        </Flex>
-         <BouttonContainer>
-         <Button onClick={() => handleClick(1)}>1</Button>
-         <Button onClick={() => handleClick(2)}>2</Button>
-         <Button onClick={() => handleClick(3)}>3</Button>
-         <Button onClick={() => handleClick(4)}>4</Button>
-        </BouttonContainer>
-     </div>
+            <Flex>
+                <Div>
+                    <Nav />
+                    <HotelCard pageNumber={page} />
+                </Div>
+            </Flex>
+            <BouttonContainer>
+                <Button onClick={() => handleClick(1)}>1</Button>
+                <Button onClick={() => handleClick(2)}>2</Button>
+                <Button onClick={() => handleClick(3)}>3</Button>
+                <Button onClick={() => handleClick(4)}>4</Button>
+            </BouttonContainer>
+        </div>
     )
 }
 

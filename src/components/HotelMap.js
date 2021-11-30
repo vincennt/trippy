@@ -9,21 +9,24 @@ const MapContainer = styled.div`
 
   @media (min-width : 725px){
     margin-left: 40px;
+}
 `
 const HotelsMap = props => {
 
+    const coords = { lat: props.center.lat, lng: props.center.lon }
+    
     if (!props.hotels) {
         return <p>Chargement...</p>
     }
-    
+
     return (
         <MapContainer>
             <GoogleMapReact
                 bootstrapURLKeys={{ key: "" }}
-                defaultCenter={{ lat: props.center.lat, lng: props.center.lon }}
+                defaultCenter={coords}
                 defaultZoom={14}
             >
-                
+
                 {props.hotels.map(hotel => (
                     <HotelMark
                         lat={hotel.location.lat}
@@ -33,7 +36,7 @@ const HotelsMap = props => {
                         setSelectHotel={props.setSelectHotel}
                     />
                 ))}
-               
+
             </GoogleMapReact>
         </MapContainer>
     );

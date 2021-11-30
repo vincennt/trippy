@@ -12,11 +12,11 @@ const P = styled.p`
 const City = styled.div`
     display : flex ;
     flex-direction: column ;
-    width: 320px ;
+    width: 320px;
     margin-bottom : 40px;
     margin: 10px;
 `
-const Image = styled.img`co
+const Image = styled.img`
     background-image: url("src");
     width: 100%;
     height : 250px;
