@@ -13,6 +13,8 @@ const MapContainer = styled.div`
 `
 const HotelsMap = props => {
 
+    const coords = { lat: props.center.lat, lng: props.center.lon }
+    
     if (!props.hotels) {
         return <p>Chargement...</p>
     }
@@ -21,7 +23,7 @@ const HotelsMap = props => {
         <MapContainer>
             <GoogleMapReact
                 bootstrapURLKeys={{ key: "" }}
-                defaultCenter={{ lat: props.center.lat, lng: props.center.lon }}
+                defaultCenter={coords}
                 defaultZoom={14}
             >
 
