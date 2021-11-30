@@ -5,7 +5,6 @@ import styled from 'styled-components'
 import HotelMap from './HotelMap';
 import Carousel from '../components/Carousel';
 import ReactStars from 'react-rating-stars-component';
-
 import Room from '../components/Room';
 
 import { FaHome, FaShuttleVan, FaParking, FaWifi, FaGlassMartiniAlt, FaSmokingBan, FaConciergeBell, FaLanguage, FaGlassCheers, FaSuitcaseRolling, FaHotTub } from 'react-icons/fa';
@@ -20,7 +19,7 @@ grid-template-columns: 1fr 1fr 1fr 1fr;
 const Contain = styled.div`
 width : 70%;
 height : auto;
-margin: 50px auto;
+margin: 30px auto;
 `
 
 
@@ -40,7 +39,7 @@ const H3 = styled.h3`
     @import url('https://fonts.googleapis.com/css2?family=PT+Sans&display=swap');
     font-family: 'PT Sans', sans-serif; 
     margin-left: 45px;
-    
+    font-weight: lighter;
 `
 const P = styled.p`  
     margin-left: 45px;
