@@ -18,8 +18,7 @@ const City = styled.div`
     flex-direction: column ;
     width: 320px ;
     margin-bottom : 40px;
-    
-    
+    margin: 10px;
 `
 const Image = styled.img`co
     background-image: url("src");

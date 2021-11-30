@@ -30,8 +30,8 @@ const P = styled.p`
     font-size : 13px;
     margin-left:2px,
 `
-const Dive = styled.div `
-    margin : 5px
+const Dive = styled.div`
+    margin : 5px;
 `
 
 const Button = styled.button`
@@ -81,16 +81,16 @@ const HotelScroll = props => {
                 <P>{props.hotel.name}</P>
                 <P>{props.hotel.price}€</P>
                 <P>Stars :  <ReactStars
-                                    count={5}
-                                    size={24}
-                                    value={props.hotel.stars}
-                                    edit={true}
-                                    activeColor="#ffd700"
-                                /></P>
+                    count={5}
+                    size={24}
+                    value={props.hotel.stars}
+                    edit={true}
+                    activeColor="#ffd700"
+                /></P>
             </Dive>
-            
+
             <Button onClick={() => props.handleAddStorage(props.hotel._id)}>Add Fav</Button>
-            
+
         </Hotel>
     );
 };
