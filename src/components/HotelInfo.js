@@ -5,7 +5,6 @@ import styled from 'styled-components'
 import HotelMap from './HotelMap';
 import Carousel from '../components/Carousel';
 import ReactStars from 'react-rating-stars-component';
-
 import Room from '../components/Room';
 
 import { FaHome, FaShuttleVan, FaParking, FaWifi, FaGlassMartiniAlt, FaSmokingBan, FaConciergeBell, FaLanguage, FaGlassCheers, FaSuitcaseRolling, FaHotTub } from 'react-icons/fa';
@@ -14,15 +13,16 @@ import { GiGymBag } from 'react-icons/gi';
 
 const Div = styled.div`
 display: grid;
-grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-margin : 10px 200px;
+grid-template-columns: 1fr 1fr 1fr 1fr;
 `
 
 const Contain = styled.div`
 width : 70%;
 height : auto;
-margin: 50px auto;
+margin: 30px auto;
 `
+
+
 
 const Button = styled.button`
     background-color: #69B1AE;
