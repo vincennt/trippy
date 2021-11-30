@@ -5,9 +5,7 @@ import { BsFillArrowLeftCircleFill, BsFillArrowRightCircleFill } from 'react-ico
 
 const Carousel = (props) => {
 
-    
     //appel API des infos de la home page
-
     // console.log(props)
     return (
         <CarouselProvider

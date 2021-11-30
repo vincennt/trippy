@@ -64,7 +64,6 @@ const HotelScroll = props => {
 
 
     return (
-
         <Hotel key={props.hotel.name} ref={ref} color={props.hotel._id === props.selectHotel._id}
             onClick={() => {
                 props.setSelectHotel(props.hotel)
@@ -88,9 +87,7 @@ const HotelScroll = props => {
                     activeColor="#ffd700"
                 /></P>
             </Dive>
-
             <Button onClick={() => props.handleAddStorage(props.hotel._id)}>Add Fav</Button>
-
         </Hotel>
     );
 };
