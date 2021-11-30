@@ -25,7 +25,7 @@ const Room = props => {
     return (
         <DivContainer>
             <Div>
-                <P>Price : {props.room.price}</P>
+                <P>Price : {props.room.price}€</P>
                 <P>People: {props.room.people}</P>
                 {props.room.isBathroom ? <P>Bathroom: yes</P> : <P>Bathroom: no</P>}
             </Div>

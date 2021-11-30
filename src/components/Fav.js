@@ -1,16 +1,17 @@
 import React from 'react'
-import { useEffect,useState } from 'react'
+import { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import arrayImage from './Img'
+
 const P = styled.p`
 font-size : 18px;
 margin-left:2px,
 `
-const Dive = styled.div 
-`margin-left : 2px`
+const Dive = styled.div
+    `margin-left : 2px`
 
-const Image = styled.img`co
+const Image = styled.img`
     background-image: url("src");
     width: 300px ;
     height : 250px;
@@ -25,7 +26,6 @@ flex-direction : column;
 justify-content : center;
     width: 300px ;
     background-image: url("src");
-    // background: linear-gradient(to bottom, #fff 50%, #e0e0e0 100%);
     border-radius: 10px;
     font-weight: bold;
     margin: 0 1em;
@@ -69,30 +69,36 @@ box-shadow: 0px 1px 0px 0px #fff6af;
 
 export default function Fav() {
 
-    
-     const handleAddStorage=(id)=>{
+
+    const handleAddStorage = (id) => {
         const favorites = localStorage.getItem("ID")
-        if (!favorites){
+        if (!favorites) {
             localStorage.setItem("ID", JSON.stringify([id]))
         }
-        else{
+        else {
             let array = JSON.parse(favorites)
-            array = [...array , id] 
+            array = [...array, id]
             console.log(array);
             localStorage.setItem("ID", JSON.stringify(array))
-            
+
         }
-        
+
     }
 
 
+<<<<<<< HEAD
 //api container
 const [hotels , setHotel] = useState([])
+=======
+    //api container
+    const [hotel, setHotel] = useState([])
+>>>>>>> 151ef6d60d0a9ba59d5bc604ed2683477165951d
 
 
-      useEffect(() =>{
+    useEffect(() => {
         const favoritesIds = JSON.parse(localStorage.getItem("ID"))
         const promiseArray = favoritesIds.map(id => {
+<<<<<<< HEAD
         return fetch(`https://trippy-konexio.herokuapp.com/api/hotels/${id}`)
     },)  
 
@@ -107,8 +113,24 @@ const [hotels , setHotel] = useState([])
   if(hotels.length === 0){
       return (<p>Loading</p>)
   }
+=======
+            return fetch(`https://trippy-konexio.herokuapp.com/api/hotels/${id}`)
+        })
+
+        Promise.all(promiseArray)
+            .then(responses => Promise.all(responses.map(response => response.json())))
+            .then(response => {
+                const formattedHotels = response.map(r => r.result)
+                setHotel(formattedHotels)
+            })
+    }, [])
+
+    if (hotel.length === 0) {
+        return (<p>Loading</p>)
+    }
+>>>>>>> 151ef6d60d0a9ba59d5bc604ed2683477165951d
     return (
-        <div>          
+        <div>
             <HotelContainer>
                 {hotels.map(hotel => {
                     var src = hotel.pictures.find(picture => arrayImage.includes(picture))
@@ -117,25 +139,32 @@ const [hotels , setHotel] = useState([])
                     }
                     else { src = 'https://media.istockphoto.com/photos/downtown-cleveland-hotel-entrance-and-waiting-taxi-cab-picture-id472899538?b=1&k=20&m=472899538&s=170667a&w=0&h=oGDM26vWKgcKA3ARp2da-H4St2dMEhJg23TTBeJgPDE=' }
 
-                    
+
                     return (
-                         
+
                         <Hotel key={hotel.name}>
+<<<<<<< HEAD
                          <Link key={hotel._id} to={`/hotels/${hotel.country}/${hotel._id}`}>                                                        
                             <Image
                             src={src} 
                             alt={hotel.name} />
+=======
+                            <Link key={hotel._id} to={`/hotels/${hotel._id}`}>
+                                <Image
+                                    src={src}
+                                    alt={hotel.name} />
+>>>>>>> 151ef6d60d0a9ba59d5bc604ed2683477165951d
                             </Link>
                             <Dive>
                                 <P>{hotel.name}</P>
                                 <P>{hotel.price}€</P>
                                 <P>{hotel.stars} Stars</P>
-                            </Dive>                            
-                        <Button onClick={()=>handleAddStorage(hotel._id)}>Add Fav</Button>
+                            </Dive>
+                            <Button onClick={() => handleAddStorage(hotel._id)}>Add Fav</Button>
                         </Hotel>)
                 })}
-            </HotelContainer>  
-            
+            </HotelContainer>
+
         </div>
     )
 
