@@ -195,9 +195,9 @@ const HotelInfo = () => {
             {buttonRoom ?
                 <>
                     <Div>
-                        {room.map(room => {
+                        {room.map(room,i => {
 
-                            return (<Room room={room} />)
+                            return (<Room key={i} room={room} />)
                         }
                         )}
 

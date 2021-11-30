@@ -64,7 +64,7 @@ const HotelCard = (props) => {
   return (
     <Map>
       <HotelContainer>
-        {hotels.results.map((hotel) => {
+        {hotels.results.map((hotel, index) => {
           var src = hotel.pictures.find((picture) =>
             arrayImage.includes(picture)
           );
@@ -77,6 +77,7 @@ const HotelCard = (props) => {
 
           return (
             <Hotel
+              key={index}
               hotel={hotel}
               selectHotel={selectHotel}
               setSelectHotel={setSelectHotel}
