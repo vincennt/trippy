@@ -135,7 +135,7 @@ const [hotel , setHotel] = useState([])
                         </Hotel>)
                 })}
             </HotelContainer>  
-            ))
+            
         </div>
     )
 

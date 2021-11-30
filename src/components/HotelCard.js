@@ -17,7 +17,7 @@ flex-direction : row;
 
 const HotelContainer = styled.div`
 
-display:flex ; 
+display: flex ; 
 flex-direction: column;
 align-items : center;
 justify-content : center ; 
@@ -28,7 +28,8 @@ justify-content : center ;
     margin: 15px;
     flex-direction: column ;
     align-items: center;
-    gap: 20px ;}
+    gap: 20px ;
+}
 `
 
 
