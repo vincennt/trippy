@@ -16,7 +16,7 @@ margin: 0;
 const City = styled.div`
     display : flex ;
     flex-direction: column ;
-    width: 320px ;
+    width: 320px;
     margin-bottom : 40px;
     
     
@@ -33,7 +33,7 @@ const CityContainer = styled.div`
     display : flex ;
     flex-direction: column ;
     align-items: center;
-     gap: 10px ;
+    gap: 10px ;
 
 `
 

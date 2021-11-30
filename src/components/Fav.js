@@ -87,7 +87,7 @@ export default function Fav() {
 
 
 //api container
-const [hotel , setHotel] = useState([])
+const [hotels , setHotel] = useState([])
 
 
       useEffect(() =>{
@@ -104,13 +104,13 @@ const [hotel , setHotel] = useState([])
       })
   }, [])
 
-  if(hotel.length === 0){
+  if(hotels.length === 0){
       return (<p>Loading</p>)
   }
     return (
         <div>          
             <HotelContainer>
-                {hotel.map(hotel => {
+                {hotels.map(hotel => {
                     var src = hotel.pictures.find(picture => arrayImage.includes(picture))
                     if (src) {
                         src = 'https://trippy-konexio.herokuapp.com' + src
@@ -121,7 +121,7 @@ const [hotel , setHotel] = useState([])
                     return (
                          
                         <Hotel key={hotel.name}>
-                         <Link key={hotel._id} to={`/hotels/${hotel._id}`}>                                                        
+                         <Link key={hotel._id} to={`/hotels/${hotel.country}/${hotel._id}`}>                                                        
                             <Image
                             src={src} 
                             alt={hotel.name} />
