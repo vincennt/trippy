@@ -3,6 +3,8 @@ import HotelCard from '../components/HotelCard';
 import Nav from '../components/Nav';
 import styled from 'styled-components';
 
+
+
 const Flex = styled.div`
 display : flex;
 flex-direction :column;
@@ -10,6 +12,7 @@ align-items : center
 `
 const BouttonContainer = styled.div`
 display : flex ; 
+justify-content: center;
 margin: 10px;
 margin-left: 35px;
 gap 4px;
@@ -58,7 +61,7 @@ const Hotels = (props) => {
     //  const { city } = useParams()
     // console.log(`"from hotel:"${city}`);
     return (
-        <>
+        <div>
         <Flex>
             <Div>
                 <Nav />
@@ -70,8 +73,8 @@ const Hotels = (props) => {
          <Button onClick={() => handleClick(2)}>2</Button>
          <Button onClick={() => handleClick(3)}>3</Button>
          <Button onClick={() => handleClick(4)}>4</Button>
-     </BouttonContainer>
-     </>
+        </BouttonContainer>
+     </div>
     )
 }
 

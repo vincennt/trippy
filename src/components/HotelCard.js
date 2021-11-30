@@ -7,12 +7,11 @@ import Hotel from './Hotel'
 
 const Map = styled.div`
 display :flex;
+flex-direction : column;
+width : 100%;
+@media (min-width : 755px){
+display :flex;
 flex-direction : row;
-
-@media (min-width: 767px) {
-    Map {
-        display: none;
-    }
 }
 `
 
@@ -23,7 +22,7 @@ flex-direction: column;
 align-items : center;
 justify-content : center ; 
 
-@media (min-width : 725px){
+@media (min-width : 755px){
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     margin: 15px;

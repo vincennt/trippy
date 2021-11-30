@@ -4,7 +4,7 @@ import HotelMark from '../components/HotelMark';
 
 const MapContainer = styled.div`
   height: 60vh;
-  width: 95%;
+  width: 100%;
   margin-left: 20px;
 
   @media (min-width : 725px){
