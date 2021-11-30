@@ -1,7 +1,18 @@
 import { React } from 'react';
 import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext, Image } from 'pure-react-carousel';
 import 'pure-react-carousel/dist/react-carousel.es.css';
-import { BsFillArrowLeftCircleFill, BsFillArrowRightCircleFill } from 'react-icons/bs';
+import { AiOutlineArrowLeft, AiOutlineArrowRight } from 'react-icons/ai';
+import 'pure-react-carousel/dist/react-carousel.es.css';
+import styled from 'styled-components'
+
+const ButtonSpace = styled.div`
+margin: 10px;
+padding : 10px;
+display: flex;
+justify-content: space-between;
+
+`
+
 
 const Carousel = (props) => {
 
@@ -16,12 +27,10 @@ const Carousel = (props) => {
             interval={3000}
             infinite
         >
-            <ButtonBack>Back</ButtonBack>
-            <ButtonNext>Next</ButtonNext>
             <Slider>
                 <Slide index={0}>
                     <Image src="https://trippy-konexio.herokuapp.com/img/hotels/10066892_18.jpg" alt="zero foto" />
-                </Slide>
+            </Slide>
                 <Slide index={1}>
                     <Image src="https://trippy-konexio.herokuapp.com/img/hotels/10066892_19.jpg" alt="first foto" />
                 </Slide>
@@ -53,6 +62,10 @@ const Carousel = (props) => {
                     <Image src="https://trippy-konexio.herokuapp.com/img/hotels/11854022_21.jpg" alt="tenth foto" />
                 </Slide>
             </Slider>
+            <ButtonSpace>
+            <ButtonBack style={{background: "transparent", border: "none"}}><AiOutlineArrowLeft size="40px" /></ButtonBack>
+            <ButtonNext style={{background: "transparent", border: "none"}}><AiOutlineArrowRight size="40px" /></ButtonNext>
+            </ButtonSpace>
         </CarouselProvider>
     );
 };

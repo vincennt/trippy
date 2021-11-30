@@ -56,9 +56,7 @@ const Hotels = (props) => {
         setPage(page)
     }
 
-    // console.log(page)
-    //  const { city } = useParams()
-    // console.log(`"from hotel:"${city}`);
+
     return (
         <div>
             <Flex>

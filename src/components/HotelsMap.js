@@ -23,6 +23,7 @@ const HotelsMap = props => {
             >
                 {props.hotels.results.map(hotel => (
                     <HotelMarker
+                        key={hotel.name}
                         lat={hotel.location.lat}
                         hotel={hotel}
                         lng={hotel.location.lon}

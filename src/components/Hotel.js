@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import styled from 'styled-components'
-import ReactStars from 'react-rating-stars-component';
+import  ReactStars from "react-rating-stars-component";
 
 const Hotel = styled.div`
     display :flex;
@@ -9,14 +9,13 @@ const Hotel = styled.div`
     justify-content : center;
     width: 300px ;
     background-image: url("src");
-    // background: linear-gradient(to bottom, #fff 50%, #e0e0e0 100%);
     border-radius: 10px;
     font-weight: bold;
     margin: 0 1em;
     padding: 0 0 10px  0;
     margin: 20px;
     height: 380px; 
-    background-color: ${props => (props.color ? "#9BE895" : "#dbdbdb")};
+    background-color: ${props => (props.color)};
 `
 const Image = styled.img`
     background-image: url("src");
@@ -64,7 +63,7 @@ const HotelScroll = props => {
 
 
     return (
-        <Hotel key={props.hotel.name} ref={ref} color={props.hotel._id === props.selectHotel._id}
+        <Hotel key={props.hotel.name} ref={ref} color={props.hotel._id === props.selectHotel._id ? "#9BE895" : "#dbdbdb"}
             onClick={() => {
                 props.setSelectHotel(props.hotel)
             }}

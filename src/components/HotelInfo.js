@@ -56,13 +56,13 @@ const Button = styled.button`
   margin-left: 45px;
   cursor: pointer;
 `;
-const H3 = styled.h3`
+const H2 = styled.h3`
   @import url("https://fonts.googleapis.com/css2?family=PT+Sans&display=swap");
   font-family: "PT Sans", sans-serif;
   margin-left: 45px;
   font-weight: lighter;
 `;
-const P = styled.p`
+const P = styled.div`
   margin-left: 45px;
   padding: 1px;
   @import url("https://fonts.googleapis.com/css2?family=PT+Sans&display=swap");
@@ -167,13 +167,13 @@ const HotelInfo = () => {
     fetch(`https://trippy-konexio.herokuapp.com/api/hotels/${id}`)
       .then((response) => response.json())
       .then((data) => setHotel(data.result));
-  }, []);
+  }, [id]);
 
   useEffect(() => {
     fetch(`https://trippy-konexio.herokuapp.com/api/hotels/${id}/rooms`)
       .then((response) => response.json())
       .then((data) => setRoom(data.results));
-  }, []);
+  }, [id]);
 
   if (!hotel) {
     return <p>Loading Data , please wait </p>;
@@ -194,13 +194,11 @@ const HotelInfo = () => {
       setButton(false);
     }
   };
-  console.log(buttonRoom);
-  console.log(room);
 
   return (
     <div>
       <div>
-        <H3>{hotel.name}</H3>
+        <H2>{hotel.name}</H2>
       </div>
       <Contain>
         <Carousel />
@@ -208,7 +206,7 @@ const HotelInfo = () => {
       {/* <div>
             </div> */}
 
-      <Button onClick={handleRoom}>Liste des chambres</Button>
+      <Button onClick={handleRoom}>Rooms list</Button>
       {buttonRoom ? (
         <>
           <Div>
@@ -222,17 +220,17 @@ const HotelInfo = () => {
               <div>
                 {hotel.commodities
                   .filter(function (ele, pos) {
-                    return hotel.commodities.indexOf(ele) == pos;
+                    return hotel.commodities.indexOf(ele) === pos;
                   })
-                  .map((element) => {
+                  .map((element, i) => {
                     let commodity = array.find((e) => e.commodity === element);
 
                     if (commodity === undefined) {
-                      return <P>{element}</P>;
+                      return <P key={i}>{element}</P>;
                     } else {
                       return (
                         <>
-                          <P>
+                          <P key={i}>
                             {commodity.icon} {element}
                           </P>
                         </>
@@ -242,6 +240,7 @@ const HotelInfo = () => {
               </div>
               <div>
                 <P>
+                  {" "}
                   Stars :{" "}
                   <ReactStars
                     count={5}
@@ -260,6 +259,7 @@ const HotelInfo = () => {
             <>
               <div>
                 <P>
+                  {" "}
                   Stars :{" "}
                   <ReactStars
                     count={5}
@@ -285,17 +285,17 @@ const HotelInfo = () => {
               <div>
                 {hotel.commodities
                   .filter(function (ele, pos) {
-                    return hotel.commodities.indexOf(ele) == pos;
+                    return hotel.commodities.indexOf(ele) === pos;
                   })
-                  .map((element) => {
+                  .map((element, i) => {
                     let commodity = array.find((e) => e.commodity === element);
 
                     if (commodity === undefined) {
-                      return <P>{element}</P>;
+                      return <P key={i}>{element}</P>;
                     } else {
                       return (
                         <>
-                          <P>
+                          <P key={i}>
                             {commodity.icon} {element}
                           </P>
                         </>
