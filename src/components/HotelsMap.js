@@ -7,6 +7,7 @@ const MapContainer = styled.div`
   width: 100%;  
   margin-top : 10px;
 `
+
 const HotelsMap = props => {
 
     if (!props.hotels) {
