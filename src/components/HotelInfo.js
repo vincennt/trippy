@@ -6,6 +6,7 @@ import HotelMap from "./HotelMap";
 import Carousel from "../components/Carousel";
 import ReactStars from "react-rating-stars-component";
 import Room from "../components/Room";
+import { useContext } from "react";
 
 import {
   FaHome,
@@ -32,6 +33,7 @@ import {
   MdFamilyRestroom,
 } from "react-icons/md";
 import { GiGymBag } from "react-icons/gi";
+import { FavoritesContext } from "../contexte/Favorite";
 
 const Div = styled.div`
   display: grid;
@@ -70,6 +72,8 @@ const P = styled.div`
 `;
 
 const HotelInfo = () => {
+  const { isFavorite, handleAddStorage, handleRemoveStorage } =
+    useContext(FavoritesContext);
   const { id } = useParams();
   const [hotel, setHotel] = useState(null);
   const [button, setButton] = useState(false);
@@ -206,6 +210,13 @@ const HotelInfo = () => {
       {/* <div>
             </div> */}
 
+      {!isFavorite(hotel._id) ? (
+        <Button onClick={() => handleAddStorage(hotel._id)}>Add Fav</Button>
+      ) : (
+        <Button onClick={() => handleRemoveStorage(hotel._id)}>
+          Remove Fav
+        </Button>
+      )}
       <Button onClick={handleRoom}>Rooms list</Button>
       {buttonRoom ? (
         <>
@@ -338,6 +349,7 @@ const HotelInfo = () => {
               </div>
             </>
           )}
+
           <HotelMap hotels={[hotel]} center={hotel.location} />
         </>
       )}

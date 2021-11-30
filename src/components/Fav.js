@@ -3,7 +3,27 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import arrayImage from "./Img";
+import { FavoritesContext } from "../contexte/Favorite";
+import { useContext } from "react";
 
+const DIV = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+`;
+
+const ButtonHome = styled.button`
+  background: #3498db;
+  width: 180px;
+  padding: 4px 0;
+
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  border-radius: 3px;
+`;
 const Para = styled.p`
   font-size: 24px;
   font-weight: 700;
@@ -67,17 +87,8 @@ const CityContainer = styled.div`
 `;
 
 export default function Fav() {
-  const handleAddStorage = (id) => {
-    const favorites = localStorage.getItem("ID");
-    if (!favorites) {
-      localStorage.setItem("ID", JSON.stringify([id]));
-    } else {
-      let array = JSON.parse(favorites);
-      array = [...array, id];
-      console.log(array);
-      localStorage.setItem("ID", JSON.stringify(array));
-    }
-  };
+  const { isFavorite, handleAddStorage, handleRemoveStorage, favorites } =
+    useContext(FavoritesContext);
 
   //api container
   const [hotel, setHotel] = useState([]);
@@ -102,13 +113,21 @@ export default function Fav() {
     } else {
       setLoading(false);
     }
-  }, []);
+  }, [favorites]);
 
   if (loading) {
     return <p>Loading</p>;
   }
   if (hotel.length === 0) {
-    return <p>Pas de favoris</p>;
+    return (
+      <DIV>
+        No Favorites
+        <br />
+        <Link to={"/"}>
+          <ButtonHome>Back To home</ButtonHome>
+        </Link>
+      </DIV>
+    );
   }
   return (
     <div>
@@ -136,9 +155,15 @@ export default function Fav() {
                 <Para>{hotel.price}€</Para>
                 <Para>{hotel.stars} Stars</Para>
               </Dive>
-              <Button onClick={() => handleAddStorage(hotel._id)}>
-                Add Fav
-              </Button>
+              {!isFavorite(hotel._id) ? (
+                <Button onClick={() => handleAddStorage(hotel._id)}>
+                  Add Fav
+                </Button>
+              ) : (
+                <Button onClick={() => handleRemoveStorage(hotel._id)}>
+                  Remove Fav
+                </Button>
+              )}
             </City>
           );
         })}

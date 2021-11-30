@@ -37,18 +37,6 @@ const HotelCard = (props) => {
   const [selectHotel, setSelectHotel] = useState({});
   // console.log(`form hotelcards : ${city}`);
 
-  const handleAddStorage = (id) => {
-    const favorites = localStorage.getItem("ID");
-    if (!favorites) {
-      localStorage.setItem("ID", JSON.stringify([id]));
-    } else {
-      let array = JSON.parse(favorites);
-      array = [...array, id];
-      console.log(array);
-      localStorage.setItem("ID", JSON.stringify(array));
-    }
-  };
-
   useEffect(() => {
     fetch(
       `https://trippy-konexio.herokuapp.com/api/hotels/city/${city}?page=${props.pageNumber}`
@@ -82,7 +70,6 @@ const HotelCard = (props) => {
               selectHotel={selectHotel}
               setSelectHotel={setSelectHotel}
               src={src}
-              handleAddStorage={handleAddStorage}
             />
           );
         })}
