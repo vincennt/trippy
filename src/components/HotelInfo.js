@@ -36,9 +36,17 @@ import { GiGymBag } from "react-icons/gi";
 import { FavoritesContext } from "../contexte/Favorite";
 
 const Div = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  margin: 10px 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  @media (min-width: 870px) {
+    display: grid;
+    flex-direction: row;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    margin: 10px 200px;
+    align-items: center;
+  }
 `;
 
 const Contain = styled.div`
