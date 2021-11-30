@@ -8,7 +8,7 @@ import ReactStars from 'react-rating-stars-component';
 
 import Room from '../components/Room';
 
-import { FaParking, FaWifi, FaGlassMartiniAlt, FaSmokingBan, FaConciergeBell, FaLanguage, FaGlassCheers, FaSuitcaseRolling, FaHotTub } from 'react-icons/fa';
+import { FaHome, FaShuttleVan, FaParking, FaWifi, FaGlassMartiniAlt, FaSmokingBan, FaConciergeBell, FaLanguage, FaGlassCheers, FaSuitcaseRolling, FaHotTub } from 'react-icons/fa';
 import { MdRestaurantMenu, MdPets, MdOutlineAccessible, MdDryCleaning, MdFreeBreakfast, MdMeetingRoom, MdOutlineAir, MdPool, MdFamilyRestroom } from 'react-icons/md';
 import { GiGymBag } from 'react-icons/gi';
 
@@ -16,7 +16,6 @@ const Div = styled.div`
 display: grid;
 grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 margin : 10px 200px;
-
 `
 
 const Contain = styled.div`
@@ -132,6 +131,14 @@ const HotelInfo = () => {
         {
             icon: <FaParking />,
             commodity: "parking"
+        },
+        {
+            icon: <FaShuttleVan />,
+            commodity: "shuttle"
+        },
+        {
+            icon: <FaHome />,
+            commodity: "suites"
         }
     ]
 
@@ -188,14 +195,14 @@ const HotelInfo = () => {
             <Button onClick={handleRoom}>Liste des chambres</Button>
             {buttonRoom ?
                 <>
-                <Div>
-                    {room.map(room => {
+                    <Div>
+                        {room.map(room => {
 
-                        return (<Room room={room} />)
-                    }
-                    )}
+                            return (<Room room={room} />)
+                        }
+                        )}
 
-                </Div>
+                    </Div>
                     <Button onClick={handleButton}>Options</Button>
                     {button ?
                         <>
@@ -226,7 +233,7 @@ const HotelInfo = () => {
                                 /></P>
                             </div>
                             <div>
-                                <P>Prix : {hotel.price}</P>
+                                <P>Prix : {hotel.price}€</P>
                             </div>
                         </> :
                         <>
@@ -240,7 +247,7 @@ const HotelInfo = () => {
                                 /></P>
                             </div>
                             <div>
-                                <P>Prix : {hotel.price}</P>
+                                <P>Prix : {hotel.price}€</P>
                             </div>
                         </>}
                     <HotelMap hotels={[hotel]} center={hotel.location} />
@@ -267,18 +274,30 @@ const HotelInfo = () => {
                                 })}
                             </div>
                             <div>
-                                <P>Stars : {hotel.stars}</P>
+                                <P>Stars :  <ReactStars
+                                    count={5}
+                                    size={24}
+                                    value={hotel.stars}
+                                    edit={true}
+                                    activeColor="#ffd700"
+                                /></P>
                             </div>
                             <div>
-                                <P>Prix : {hotel.price}</P>
+                                <P>Prix : {hotel.price}€</P>
                             </div>
                         </> :
                         <>
                             <div>
-                                <P>Stars : {hotel.stars}</P>
+                                <P>Stars :  <ReactStars
+                                    count={5}
+                                    size={24}
+                                    value={hotel.stars}
+                                    edit={true}
+                                    activeColor="#ffd700"
+                                /></P>
                             </div>
                             <div>
-                                <P>Prix : {hotel.price}</P>
+                                <P>Prix : {hotel.price}€</P>
                             </div>
                         </>}
                     <HotelMap hotels={[hotel]} center={hotel.location} />
