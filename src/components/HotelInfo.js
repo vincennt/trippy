@@ -42,7 +42,7 @@ const H2 = styled.h3`
     font-weight:lighter;
     
 `
-const P = styled.p`  
+const P = styled.div`  
     margin-left: 45px;
     padding: 1px;
     @import url('https://fonts.googleapis.com/css2?family=PT+Sans&display=swap');
@@ -57,7 +57,7 @@ const HotelInfo = () => {
     const [button, setButton] = useState(false)
     const [room, setRoom] = useState(null)
     const [buttonRoom, setButtonRoom] = useState(false)
-    const [roomPage, setRoomPage] = useState(0);
+
 
 
 
@@ -154,19 +154,15 @@ const HotelInfo = () => {
         fetch(`https://trippy-konexio.herokuapp.com/api/hotels/${id}`)
             .then(response => response.json())
             .then(data => setHotel(data.result))
-    }, [])
+    }, [id])
 
     useEffect(() => {
         fetch(`https://trippy-konexio.herokuapp.com/api/hotels/${id}/rooms`)
             .then(response => response.json())
             .then(data => setRoom(data.results))
-    }, [])
+    }, [id])
 
-    useEffect(() => {
-        fetch(`https://trippy-konexio.herokuapp.com/api/hotels/${id}`)
-            .then(response => response.json())
-            .then(data => setRoomPage(data.result.rooms))
-    }, [])
+
 
 
     
@@ -197,10 +193,7 @@ const HotelInfo = () => {
         }
     }
 
-    function handleClick(roomPage) {
-        setRoomPage(roomPage)
-        console.log(roomPage, "room page")
-    }
+
 
 
     return (
@@ -218,9 +211,9 @@ const HotelInfo = () => {
             {buttonRoom ?
                 <>
                     <Div>
-                        {room.map(room => {
+                        {room.map((room, i)=> {
 
-                            return (<Room room={room} />)
+                            return (<Room key={i} room={room} />)
                         }
                         )}
 
@@ -229,17 +222,17 @@ const HotelInfo = () => {
                     {button ?
                         <>
                             <div>{hotel.commodities.filter(function (ele, pos) {
-                                return hotel.commodities.indexOf(ele) == pos;
+                                return hotel.commodities.indexOf(ele) === pos;
                             })
-                                .map(element => {
+                                .map((element, i) => {
                                     let commodity = array.find(e => e.commodity === element)
 
                                     if (commodity === undefined) {
-                                        return <P>{element}</P>
+                                        return <P key={i}>{element}</P>
                                     } else {
                                         return (
                                             <>
-                                                <P>{commodity.icon} {element}</P>
+                                                <P key={i}>{commodity.icon} {element}</P>
 
                                             </>)
                                     }
@@ -281,15 +274,15 @@ const HotelInfo = () => {
                             <div>{hotel.commodities.filter(function (ele, pos) {
                                 return hotel.commodities.indexOf(ele) === pos;
                             })
-                                .map(element => {
+                                .map((element,i) => {
                                     let commodity = array.find(e => e.commodity === element)
 
                                     if (commodity === undefined) {
-                                        return <P>{element}</P>
+                                        return <P key={i}>{element}</P>
                                     } else {
                                         return (
                                             <>
-                                                <P>{commodity.icon} {element}</P>
+                                                <P key={i}>{commodity.icon} {element}</P>
 
                                             </>)
                                     }

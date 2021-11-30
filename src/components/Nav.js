@@ -28,7 +28,7 @@ const Nav = () => {
     return (
         <NavBar>
             <Link to="/" style={{ textDecoration: 'none' }}><H1>Trippy</H1></Link>
-            <Link to="/favorites" ><FaStar color="white" margin-top="8px"  padding="25px" font-size="20px"/></Link>
+            <Link to="/favorites" ><FaStar color="white" margin-top="8px"  padding="25px" size="20px"/></Link>
         </NavBar>
     );
 };

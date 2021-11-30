@@ -5,9 +5,6 @@ import HotelInfo from '../components/HotelInfo';
 
 const HotelPage = props => {
 
-    //   const { city } = useParams();
-    // console.log(city);
-    console.log(props);
 
     return (
         <div>

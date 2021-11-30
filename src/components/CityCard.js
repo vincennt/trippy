@@ -60,7 +60,7 @@ const CityCard = () => {
     return (
         <CityContainer>
             {citys.cities.map((city, i) =>
-                <City >
+                <City key={city.name} >
                     <Link key={city.name} to={`/hotels/${city.slug}`} >
                         <Image src={`https://trippy-konexio.herokuapp.com/${city.source}`} alt={city.slug} />
                     </Link>

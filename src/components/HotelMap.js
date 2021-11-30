@@ -28,6 +28,7 @@ const HotelsMap = props => {
             >                
                 {props.hotels.map(hotel => (
                     <HotelMark
+                        key={hotel.name}  
                         lat={hotel.location.lat}
                         hotel={hotel}
                         lng={hotel.location.lon}

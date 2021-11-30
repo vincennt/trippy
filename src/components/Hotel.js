@@ -15,7 +15,7 @@ const Hotel = styled.div`
     padding: 0 0 10px  0;
     margin: 20px;
     height: 380px; 
-    background-color: ${props => (props.color ? "#9BE895" : "#dbdbdb")};
+    background-color: ${props => (props.color)};
 `
 const Image = styled.img`
     background-image: url("src");
@@ -63,7 +63,7 @@ const HotelScroll = props => {
 
 
     return (
-        <Hotel key={props.hotel.name} ref={ref} color={props.hotel._id === props.selectHotel._id}
+        <Hotel key={props.hotel.name} ref={ref} color={props.hotel._id === props.selectHotel._id ? "#9BE895" : "#dbdbdb"}
             onClick={() => {
                 props.setSelectHotel(props.hotel)
             }}

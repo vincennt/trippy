@@ -13,11 +13,11 @@ const BoxPrice = styled.div`
     position: relative;
     border: solid green;
     border-radius: 7px;
-    background-color: ${props => (props.color ? "green" : "white")};
+    background-color: ${props => (props.color)};
 `
 
 const Text = styled.p`
-    color: ${props => (props.color ? "white" : "black")};
+    color: ${props => (props.color )};
     font-size: 20px;
     text-align: center;
     margin-top: 10px;
@@ -28,7 +28,7 @@ const HotelMarker = props => {
  
     return (
         <Box>
-            <BoxPrice ref={ref} color={props.hotel._id === props.selectHotel._id}
+            <BoxPrice ref={ref} color={props.hotel._id === props.selectHotel._id ? "green" : "white"}
                 onMouseEnter={() => {
                     props.setSelectHotel(props.hotel)
                 }}
@@ -38,7 +38,7 @@ const HotelMarker = props => {
                 lat={props.lat}
                 lng={props.lng}
             >
-            <Text color={props.hotel._id === props.selectHotel._id} >{props.hotel.price}€</Text>
+            <Text color={props.hotel._id === props.selectHotel._id ? "white" : "black"} >{props.hotel.price}€</Text>
             </BoxPrice>
         </Box>
 
